@@ -10,7 +10,7 @@ import acm.program.GraphicsProgram;
 public class Board extends GraphicsProgram {
 
     private GImage background;
-    private CurvedWall curvedWall;
+    private GImage curvedWall;
     private CircleBumper circleBumper50;
     private CircleBumper circleBumper10;
     private CircleBumper circleBumper25;
@@ -27,11 +27,13 @@ public class Board extends GraphicsProgram {
 	private Spring sprong = new Spring(6, 40, sp, this, 400, 600);
 	private Ball pinball = new Ball(100, 100, pb ,  6, 1, -1, this, sprong);
 	
-	public void keyPressed(KeyEvent s){
+	public void keyPressed(KeyEvent s)
+	{
 		if(s.getKeyChar() == 's')
 			sprong.springdown();
 	}
-	public void keyReleased(KeyEvent s){
+	public void keyReleased(KeyEvent s)
+	{
 		if(s.getKeyChar() == 's')
 			sprong.release();
 	}
@@ -44,8 +46,9 @@ public class Board extends GraphicsProgram {
     	setSize(536, 800);
         background = new GImage("Background.png");
         background.setSize(getWidth(), getHeight());
+        
+        curvedWall = new GImage("CurvedWall.png", 0, 0);
 
-        curvedWall = new CurvedWall(43, 49, 452, 700);
         circleBumper50 = new CircleBumper(250, 400, 25, "CircleBumper50.png", this);
         circleBumper25 = new CircleBumper(400, 230, 25, "CircleBumper25.png", this);
         circleBumper10 = new CircleBumper(300, 300, 25, "CircleBumper10.png", this);
@@ -62,7 +65,8 @@ public class Board extends GraphicsProgram {
         circleBumper25.showBumper();
         circleBumper10.showBumper();
         
-        while(true){
+        while(true)
+        {
             pause(tick);
             pinball.moved(gravconstant);
         }

@@ -1,15 +1,16 @@
-import acm.graphics.GOval;
-import java.awt.*;
+import acm.graphics.GImage;
+import acm.graphics.GPolygon;
 
 /**
  * Created by davidmaccumber on 8/1/16.
  */
-public class CurvedWall extends GOval {
+public class CurvedWall extends GPolygon {
 
-    public CurvedWall(double x, double y, double w, double h)
+    private Board myBoard;
+    private GImage wallGImage;
+
+    public CurvedWall(double x, double y)
     {
-        super(x, y, w, h);
-        /*setColor(Color.lightGray);
-        setFilled(true);*/
+        super(x, y);
     }
 }
