@@ -6,7 +6,7 @@ public class Spring extends GRect
 	double ySet;
 	double strength = 0;
 	int pulled = 0;
-	public Spring(double xS, double yS, Color c, Board board, double xp, double yp) 
+	public Spring(double xS, double yS, Color c, Board board, double xP, double yP) 
 	{
 		super(xP, yP, xS, yS);
 		setFilled(true);

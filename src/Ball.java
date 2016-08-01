@@ -49,7 +49,7 @@ public class Ball extends GOval{
 	public void launch()
 	{
 		springed = false;
-		setLocation(sprong.getX() - 3,sprong.getY() - 14);
+		setLocation(sprong.getX() - 3, sprong.getY() - 14);
 		YVelocity =- power;
 		power = 0;
 	}
@@ -77,7 +77,7 @@ public class Ball extends GOval{
 		}
 		if(!(getY() + getHeight() >= sprong.getY() && getX() >= sprong.getX() - 3 
 				&& getX() <= sprong.getX() + sprong.getWidth() 
-				&& getY() <= sprong.getY()+ (sprong.getHeight() * .3) || springed))
+				&& getY() <= sprong.getY() + (sprong.getHeight() * .3) || springed))
 		{
 			move(XVelocity, YVelocity);
 		}
