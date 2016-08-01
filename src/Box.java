@@ -4,21 +4,20 @@ import java.awt.Color;
 
 public class Box extends GraphicsProgram
 {
-	//private GImage background;
+	private GImage background;
 
 	
 	public void init()
 	{
 		setSize(536, 800);
-		//background = new GImage("BoardTemplate.jpg", 0, 0);
-		//background.setSize(getWidth(), getHeight());
+		background = new GImage("BoardTemplate.jpg", 0, 0);
+		background.setSize(getWidth(), getHeight());
 	}
 
 	public void run() 
-	
 	{
 		
-		//add(background);
+		add(background);
 		GPolygon poly = new GPolygon();
 	      poly.setFilled(true);
 	      poly.setColor(Color.RED);
