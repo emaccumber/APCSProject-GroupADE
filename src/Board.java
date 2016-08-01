@@ -20,19 +20,19 @@ public class Board extends GraphicsProgram {
         new Board().start();
     }
     
-    Color pb=new Color(0, 0, 255);
-	Color sp=new Color(125, 125, 125);
-	double tick=.001;
-	double gravconstant=3;
-	private Spring sprong=new Spring(6, 40, sp, this, 400, 600);
-	private Ball pinball=new Ball(100, 100, pb ,  6, 1, -1, this, sprong);
+    Color pb = new Color(0, 0, 255);
+	Color sp = new Color(125, 125, 125);
+	double tick = .001;
+	double gravconstant = 3;
+	private Spring sprong = new Spring(6, 40, sp, this, 400, 600);
+	private Ball pinball = new Ball(100, 100, pb ,  6, 1, -1, this, sprong);
 	
 	public void keyPressed(KeyEvent s){
-		if(s.getKeyChar()=='s')
+		if(s.getKeyChar() == 's')
 			sprong.springdown();
 	}
 	public void keyReleased(KeyEvent s){
-		if(s.getKeyChar()=='s')
+		if(s.getKeyChar() == 's')
 			sprong.release();
 	}
 	

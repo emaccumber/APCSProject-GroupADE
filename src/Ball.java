@@ -11,7 +11,7 @@ public class Ball extends GOval{
 	double power;
 	Board board;
 	Spring sprong;
-	boolean springed=false;
+	boolean springed = false;
 	public Ball(double x, double y, Color c, double r, double xVel, double yVel, Board box, Spring spring)
 	    {
 	        super(x, y, 2*r, 2*r);
@@ -21,60 +21,76 @@ public class Ball extends GOval{
 	        XVelocity = xVel;
 	        YVelocity = yVel;
 	        board = box;
-	        sprong=spring;
+	        sprong = spring;
 	    }
-	public void gravitAdd(double constant){
-		double change=constant/1000;
-		YVelocity=YVelocity+change;
+	public void gravitAdd(double constant)
+	{
+		double change=constant / 1000;
+		YVelocity = YVelocity + change;
 	}
 	public void boundaryHit(){
-		if(getY()+getHeight()>=board.getHeight()&&YVelocity>0){
-			YVelocity=YVelocity*-1;
+		if(getY() + getHeight() >= board.getHeight() && YVelocity > 0)
+		{
+			YVelocity = YVelocity * -1;
 		}
-		if(getY()<=0&&YVelocity<0){
-			YVelocity=YVelocity*-1;
+		if(getY() <= 0 && YVelocity < 0)
+		{
+			YVelocity = YVelocity * -1;
 		}
-		if(getX()<=0&&XVelocity<0){
-			XVelocity=XVelocity*-1;
+		if(getX() <= 0 && XVelocity < 0)
+		{
+			XVelocity = XVelocity * -1;
 		}
-		if(getX()+getWidth()>=board.getWidth()&&XVelocity>0){
-			XVelocity=XVelocity*-1;
+		if(getX() + getWidth() >= board.getWidth() && XVelocity > 0)
+		{
+			XVelocity = XVelocity * -1;
 		}
 	}
-	public void launch(){
-		springed=false;
-		setLocation(sprong.getX()-3,sprong.getY()-14);
-		YVelocity=-power;
-		power=0;
+	public void launch()
+	{
+		springed = false;
+		setLocation(sprong.getX() - 3,sprong.getY() - 14);
+		YVelocity =- power;
+		power = 0;
 	}
-	public void airResist(){
-		YVelocity=YVelocity*.9995;
-		XVelocity=XVelocity*.9995;
+	public void airResist()
+	{
+		YVelocity=YVelocity * .9995;
+		XVelocity=XVelocity * .9995;
 	}
-	public double getSpeed(){
-		double speed=(Math.sqrt((YVelocity*YVelocity)+(XVelocity*XVelocity)));
+	public double getSpeed()
+	{
+		double speed = (Math.sqrt((YVelocity * YVelocity) + (XVelocity * XVelocity)));
 		return speed;
 	}
-	public void changeSpSize(double size){
-		super.setSize(size, size/2);
+	public void changeSpSize(double size)
+	{
+		super.setSize(size, size / 2);
 	}
-	public void moved(double constant){
-		if(!springed){
+	public void moved(double constant)
+	{
+		if(!springed)
+		{
 			gravitAdd(constant);
 			boundaryHit();
 			airResist();
 		}
-		if(!(getY()+getHeight()>=sprong.getY()&&getX()>=sprong.getX()-3&&getX()<=sprong.getX()+sprong.getWidth()&&getY()<=sprong.getY()+(sprong.getHeight()*.3)||springed)){
+		if(!(getY() + getHeight() >= sprong.getY() && getX() >= sprong.getX() - 3 
+				&& getX() <= sprong.getX() + sprong.getWidth() 
+				&& getY() <= sprong.getY()+ (sprong.getHeight() * .3) || springed))
+		{
 			move(XVelocity, YVelocity);
 		}
-		else if(YVelocity>=0&&sprong.pulled==1){
-			springed=true;
-			XVelocity=0;
-			YVelocity=0;			
-			setLocation(sprong.getX()-3, sprong.getY()-10);
-			power=sprong.strength;
+		else if(YVelocity >= 0 && sprong.pulled == 1)
+		{
+			springed = true;
+			XVelocity = 0;
+			YVelocity = 0;			
+			setLocation(sprong.getX() - 3, sprong.getY() - 10);
+			power = sprong.strength;
 		}
-		else{
+		else
+		{
 			launch();
 		}
 	}
