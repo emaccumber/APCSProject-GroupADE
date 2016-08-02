@@ -15,7 +15,7 @@ public class Spring extends GRect
 	}
 	public void springdown(){
 		pulled = 1;
-		setSize(getWidth(), getHeight()-2);
+		setSize(getWidth(), getHeight() - 2);
 		if(getHeight() > 0)
 		{
 			if(strength == 0)
