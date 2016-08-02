@@ -2,6 +2,8 @@
  * Created by davidmaccumber on 8/1/16.
  */
 import acm.graphics.GImage;
+import acm.graphics.GOval;
+
 import java.awt.event.*;
 import java.awt.*;
 
@@ -16,6 +18,9 @@ public class Board extends GraphicsProgram {
     private CircleBumper circleBumper50;
     private CircleBumper circleBumper10;
     private CircleBumper circleBumper25;
+    
+	private GOval hitOval = new GOval(43, 51, 454, 714); 
+
 
     public static void main(String[] args)
     {
@@ -64,6 +69,8 @@ public class Board extends GraphicsProgram {
         add(bars);
     	add(pinball);
         add(sprong);
+        
+        add(hitOval);
     }
 
     public void run()

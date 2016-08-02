@@ -1,4 +1,5 @@
 import acm.graphics.GImage;
+import acm.graphics.GOval;
 import acm.graphics.GPolygon;
 
 /**
@@ -13,4 +14,6 @@ public class CurvedWall extends GPolygon {
     {
         super(x, y);
     }
+    
+    
 }
