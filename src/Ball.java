@@ -37,30 +37,30 @@ public class Ball extends GOval{
 	}
 	public void boundaryHit(){
 		
-		/*if(getY() + getHeight() >= board.getHeight() && YVelocity > 0)
+		if(getY() + getHeight() >= (board.getHeight() - 51) && YVelocity > 0)
 		{
 			YVelocity = YVelocity * -1;
 		}
-		if(getY() <= 0 && YVelocity < 0)
+		if(getY() <= 51 && YVelocity < 0)
 		{
 			YVelocity = YVelocity * -1;
 		}
-		if(getX() <= 0 && XVelocity < 0)
+		if(getX() <= 43 && XVelocity < 0)
 		{
 			XVelocity = XVelocity * -1;
 		}
-		if(getX() + getWidth() >= board.getWidth() && XVelocity > 0)
+		if(getX() + getWidth() >= (board.getWidth() - 43) && XVelocity > 0)
 		{
 			XVelocity = XVelocity * -1;
 		}
 		
-		if (((getY() + getHeight()) >= board.getY() - 2) && (getY() <= (board.getSideBars().getY() +
-                board.getSideBars().getHeight() - 2)) && (getX() <= (board.getSideBars().getX() +
+		if ((getY() + getHeight()) >= board.getY() && (getY() <= (board.getSideBars().getY() +
+                board.getSideBars().getHeight())) && (getX() <= (board.getSideBars().getX() +
                 board.getSideBars().getWidth())))
 		{
           XVelocity = -XVelocity;
 		}
-		*/
+		
 		if (!board.getMyhitOval().contains(getX(), getY()))
 		{
 			
