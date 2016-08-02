@@ -19,6 +19,7 @@ public class Board extends GraphicsProgram {
     private CircleBumper circleBumper50;
     private CircleBumper circleBumper10;
     private CircleBumper circleBumper25;
+    private Digits score;
     
 	private GOval hitOval = new GOval(43, 51, 454, 700); 
 
@@ -26,6 +27,8 @@ public class Board extends GraphicsProgram {
     {
         new Board().start();
     }
+    
+   
     
     Color pb = new Color(0, 0, 0);
 	Color sp = new Color(125, 125, 125);
@@ -45,12 +48,12 @@ public class Board extends GraphicsProgram {
 			sprong.release();
 	}
 	
-
-    public void init()
+    
+	public void init()
     {
     	addKeyListeners(this);
-    	
     	setSize(536, 800);
+    	score = new Digits("0000", this);
         background = new GImage("Background.png");
         background.setSize(getWidth(), getHeight());
         spring = new GImage("Spring.png", 0, 0);
@@ -77,6 +80,7 @@ public class Board extends GraphicsProgram {
 
     public void run()
     {
+        score.showDigits();
     	sideBars.showSideBars();
         circleBumper50.showBumper();
         circleBumper25.showBumper();
