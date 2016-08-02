@@ -45,6 +45,7 @@ public class Ball extends GOval{
 		{
 			XVelocity = XVelocity * -1;
 		}
+	
 	}
 	public void launch()
 	{

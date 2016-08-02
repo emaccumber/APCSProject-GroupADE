@@ -11,6 +11,8 @@ public class Board extends GraphicsProgram {
 
     private GImage background;
     private GImage curvedWall;
+    private GImage bars;
+    private GImage sideBars;
     private CircleBumper circleBumper50;
     private CircleBumper circleBumper10;
     private CircleBumper circleBumper25;
@@ -53,8 +55,15 @@ public class Board extends GraphicsProgram {
         circleBumper25 = new CircleBumper(400, 230, 25, "CircleBumper25.png", this);
         circleBumper10 = new CircleBumper(300, 300, 25, "CircleBumper10.png", this);
         
+        bars = new GImage("Bars.png", 0, 0);
+        bars.setSize(getWidth(), getHeight());
+        sideBars = new GImage("SideBars.png", 0, 0);
+        sideBars.setSize(getWidth(), getHeight());
+        
         add(background);
         add(curvedWall);
+        add(bars);
+        add(sideBars);
     	add(pinball);
         add(sprong);
     }
