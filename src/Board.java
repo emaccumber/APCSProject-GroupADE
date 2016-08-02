@@ -12,6 +12,7 @@ public class Board extends GraphicsProgram {
     private GImage background;
     private GImage curvedWall;
     private GImage bars;
+    private GImage spring;
     private SideBars sideBars;
     private CircleBumper circleBumper50;
     private CircleBumper circleBumper10;
@@ -26,8 +27,8 @@ public class Board extends GraphicsProgram {
 	Color sp = new Color(125, 125, 125);
 	double tick = .001;
 	double gravconstant = 3;
-	private Spring sprong = new Spring(6, 40, sp, this, 480, 700);
-	private Ball pinball = new Ball(100, 100, pb, 6, 4, 2, this, sprong);
+	private Spring sprong = new Spring(6, 40, this, 480, 705);
+	private Ball pinball = new Ball(sprong.getX(), sprong.getY(), pb, 8, 0, 0, this, sprong);
 	
 	public void keyPressed(KeyEvent s)
 	{
@@ -48,6 +49,8 @@ public class Board extends GraphicsProgram {
     	setSize(536, 800);
         background = new GImage("Background.png");
         background.setSize(getWidth(), getHeight());
+        spring = new GImage("Spring.png", 0, 0);
+        spring.setSize(getWidth(), getHeight());
         
         curvedWall = new GImage("CurvedWall.png", 0, 0);
 
@@ -64,6 +67,7 @@ public class Board extends GraphicsProgram {
         add(bars);
     	add(pinball);
         add(sprong);
+        add(spring);
     }
 
     public void run()
