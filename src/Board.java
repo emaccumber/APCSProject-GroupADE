@@ -35,7 +35,7 @@ public class Board extends GraphicsProgram {
 	double tick = .001;
 	double gravconstant = 3;
 	private Spring sprong = new Spring(6, 40, this, 477, 705);
-	private Ball pinball = new Ball(200, 200, pb, 8, 0, 0, this, sprong);
+	private Ball pinball = new Ball(140, 200, pb, 8, 0, 0, this, sprong);
 	
 	public void keyPressed(KeyEvent s)
 	{
