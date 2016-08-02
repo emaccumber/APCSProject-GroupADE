@@ -6,11 +6,10 @@ public class Spring extends GRect
 	double ySet;
 	double strength = 0;
 	int pulled = 0;
-	public Spring(double xS, double yS, Color c, Board board, double xP, double yP) 
+	public Spring(double xS, double yS, Board board, double xP, double yP) 
 	{
 		super(xP, yP, xS, yS);
-		setFilled(true);
-		setColor(c);
+		setVisible(false);
 		ySet = yS;
 	}
 	public void springdown(){
@@ -20,9 +19,9 @@ public class Spring extends GRect
 			setSize(getWidth(), getHeight() - 2);
 			if(strength == 0)
 			{
-				strength = .05;
+				strength = .25;
 			}
-			strength = strength * 1.25;
+			strength = strength * 1.20;
 			move(0, 2);
 		}
 	}
