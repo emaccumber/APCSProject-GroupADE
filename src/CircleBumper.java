@@ -9,7 +9,7 @@ public class CircleBumper extends GOval {
     private Board myBoard;
     private GImage bumperGImage;
 
-    public CircleBumper(double x, double y, double r, String bumperImage, Board board)
+    public CircleBumper(double x, double y, double r, String bumperImage, Board board, Ball ball)
     {
         super(x, y, 2*r, 2*r);
         myBoard = board;
