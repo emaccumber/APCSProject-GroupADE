@@ -15,6 +15,7 @@ public class SideBars extends GRect {
         myBoard = board;
         sideBarsGImage = new GImage(sideBarsImage, 0, 0);
         sideBarsGImage.setSize(myBoard.getWidth(), myBoard.getHeight());
+        setVisible(false);			// sets the GRect for the side bar invisible 
     }
 
     public void showSideBars()

@@ -15,6 +15,7 @@ public class CircleBumper extends GOval {
         myBoard = board;
         bumperGImage = new GImage(bumperImage, x, y);
         bumperGImage.setSize(2*r, 2*r);
+        setVisible(false); 			// sets the GOval for each bumper as invisible
     }
 
     public void showBumper()
