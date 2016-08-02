@@ -79,5 +79,10 @@ public class Board extends GraphicsProgram {
             pinball.moved(gravconstant);
         }
     }
+    
+    public SideBars getSideBars()
+    {
+    	return sideBars;
+    }
 
 }

@@ -29,6 +29,7 @@ public class Ball extends GOval{
 		YVelocity = YVelocity + change;
 	}
 	public void boundaryHit(){
+		
 		if(getY() + getHeight() >= board.getHeight() && YVelocity > 0)
 		{
 			YVelocity = YVelocity * -1;
@@ -45,6 +46,14 @@ public class Ball extends GOval{
 		{
 			XVelocity = XVelocity * -1;
 		}
+		
+		if (((getY() + getHeight()) >= board.getY() - 2) && (getY() <= (board.getSideBars().getY() +
+                board.getSideBars().getHeight() - 2)) && (getX() <= (board.getSideBars().getX() +
+                board.getSideBars().getWidth())))
+		{
+          XVelocity = -XVelocity;
+		}
+          
 	
 	}
 	public void launch()
