@@ -32,7 +32,7 @@ public class Board extends GraphicsProgram {
 	Color sp = new Color(125, 125, 125);
 	double tick = .001;
 	double gravconstant = 3;
-	private Spring sprong = new Spring(6, 40, this, 480, 705);
+	private Spring sprong = new Spring(6, 40, this, 477, 705);
 	private Ball pinball = new Ball(sprong.getX(), sprong.getY(), pb, 8, 0, 0, this, sprong);
 	
 	public void keyPressed(KeyEvent s)
