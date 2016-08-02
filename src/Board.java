@@ -26,7 +26,7 @@ public class Board extends GraphicsProgram {
 	Color sp = new Color(125, 125, 125);
 	double tick = .001;
 	double gravconstant = 3;
-	private Spring sprong = new Spring(6, 40, sp, this, 400, 600);
+	private Spring sprong = new Spring(6, 40, sp, this, 480, 700);
 	private Ball pinball = new Ball(100, 100, pb, 6, 4, 2, this, sprong);
 	
 	public void keyPressed(KeyEvent s)
