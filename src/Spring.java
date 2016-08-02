@@ -15,16 +15,16 @@ public class Spring extends GRect
 	}
 	public void springdown(){
 		pulled = 1;
-		setSize(getWidth(), getHeight() - 2);
-		if(getHeight() > 0)
+		if(getHeight() > 6)
 		{
+			setSize(getWidth(), getHeight() - 2);
 			if(strength == 0)
 			{
 				strength = .05;
 			}
 			strength = strength * 1.25;
+			move(0, 2);
 		}
-		move(0, 2);
 	}
 	public void release(){
 		pulled = 0;
