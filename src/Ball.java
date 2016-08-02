@@ -1,15 +1,16 @@
+/**
+ * Created by Abim, David and Ethan on 8/1/16
+ * AP Computer Science
+ */
+
 import java.awt.Color;
 import acm.graphics.GOval;
 
-//APCS Final - Pinball 
-//Abim, Ethan, and David 
-//Aug 2016
-//
 public class Ball extends GOval{
 	private double XVelocity;
 	private double YVelocity;
 	private double power;
-	private Board board;
+	private Board myBoard;
 	private Spring sprong;
 	private boolean springed = false;
 	
@@ -27,7 +28,7 @@ public class Ball extends GOval{
 	        setFilled(true);
 	        XVelocity = xVel;
 	        YVelocity = yVel;
-	        board = box;
+	        myBoard = box;
 	        sprong = spring;
 	    }
 	public void gravitAdd(double constant)
@@ -37,7 +38,7 @@ public class Ball extends GOval{
 	}
 	public void boundaryHit(){
 		
-		if(getY() + getHeight() >= (board.getHeight() - 51) && YVelocity > 0)
+		if(getY() + getHeight() >= (myBoard.getHeight() - 51) && YVelocity > 0)
 		{
 			YVelocity = YVelocity * -1;
 		}
@@ -49,19 +50,19 @@ public class Ball extends GOval{
 		{
 			XVelocity = XVelocity * -1;
 		}
-		if(getX() + getWidth() >= (board.getWidth() - 43) && XVelocity > 0)
+		if(getX() + getWidth() >= (myBoard.getWidth() - 43) && XVelocity > 0)
 		{
 			XVelocity = XVelocity * -1;
 		}
 		
-		if ((getY() + getHeight()) >= board.getY() && (getY() <= (board.getSideBars().getY() +
-                board.getSideBars().getHeight())) && (getX() <= (board.getSideBars().getX() +
-                board.getSideBars().getWidth())))
+		if ((getY() + getHeight()) >= myBoard.getY() && (getY() <= (myBoard.getSideBars().getY() +
+                myBoard.getSideBars().getHeight())) && (getX() <= (myBoard.getSideBars().getX() +
+                myBoard.getSideBars().getWidth())))
 		{
           XVelocity = -XVelocity;
 		}
 		
-		if (!board.getMyhitOval().contains(getX(), getY()))
+	/*	if (!board.getMyhitOval().contains(getX(), getY()))
 		{
 			
 			tanSlope = (-1) / ((-12755 * xToUse) / (5153 * yToUse)); 
@@ -69,9 +70,9 @@ public class Ball extends GOval{
 			d = (xToUse + (yToUse - b) * tanSlope) / (1 + tanSlope * tanSlope); 
 			
 			XVelocity = 2 * d - xToUse;
-			YVelocity = 2 * d * tanSlope - yToUse + 2 * b; 
+			YVelocity = 2 * d * tanSlope - yToUse + 2 * b;  
 			
-		}
+		} */
           
 	
 	}

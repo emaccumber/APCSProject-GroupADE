@@ -1,4 +1,7 @@
-
+/**
+ * Created by Abim, David and Ethan on 8/1/16
+ * AP Computer Science
+ */
 import acm.graphics.GRect;
 import java.awt.Color;
 public class Spring extends GRect

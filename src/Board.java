@@ -1,5 +1,6 @@
 /**
- * Created by davidmaccumber on 8/1/16.
+ * Created by Abim, David and Ethan on 7/27/16
+ * AP Computer Science
  */
 import acm.graphics.GImage;
 import acm.graphics.GOval;
@@ -9,6 +10,7 @@ import java.awt.*;
 
 
 import acm.program.GraphicsProgram;
+
 public class Board extends GraphicsProgram {
 
     private GImage background;
@@ -16,10 +18,10 @@ public class Board extends GraphicsProgram {
     private GImage bars;
     private GImage spring;
     private SideBars sideBars;
+    private Score scoreBoard;
     private CircleBumper circleBumper50;
     private CircleBumper circleBumper10;
     private CircleBumper circleBumper25;
-    private Digits score;
     
 	private GOval hitOval = new GOval(43, 51, 454, 700); 
 
@@ -27,8 +29,6 @@ public class Board extends GraphicsProgram {
     {
         new Board().start();
     }
-    
-   
     
     Color pb = new Color(0, 0, 0);
 	Color sp = new Color(125, 125, 125);
@@ -47,17 +47,17 @@ public class Board extends GraphicsProgram {
 		if(s.getKeyChar() == 's')
 			sprong.release();
 	}
-	
-    
+	    
 	public void init()
     {
     	addKeyListeners(this);
     	setSize(536, 800);
-    	score = new Digits("0000", this);
         background = new GImage("Background.png");
         background.setSize(getWidth(), getHeight());
         spring = new GImage("Spring.png", 0, 0);
         spring.setSize(getWidth(), getHeight());
+        
+        scoreBoard = new Score("0000", 206, 43);
         
         curvedWall = new GImage("CurvedWall.png", 0, 0);
 
@@ -76,11 +76,11 @@ public class Board extends GraphicsProgram {
         add(sprong);
         add(spring);
         add(hitOval);
+        add(scoreBoard);
     }
 
     public void run()
     {
-        score.showDigits();
     	sideBars.showSideBars();
         circleBumper50.showBumper();
         circleBumper25.showBumper();
@@ -89,7 +89,7 @@ public class Board extends GraphicsProgram {
         while(true)
         {
             pause(tick);
-            pinball.moved(gravconstant);
+            pinball.moved(gravconstant); 
         }
     }
     
@@ -103,4 +103,8 @@ public class Board extends GraphicsProgram {
         return hitOval;
     }
 
+    public Score getMyScoreBoard()
+    {
+        return scoreBoard;
+    }
 }
