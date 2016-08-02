@@ -35,17 +35,27 @@ public class Board extends GraphicsProgram {
 	double tick = .001;
 	double gravconstant = 3;
 	private Spring sprong = new Spring(6, 40, this, 477, 705);
-	private Ball pinball = new Ball(140, 200, pb, 8, 0, 0, this, sprong);
+	private Ball pinball = new Ball(479, 200, pb, 8, 0, 0, this, sprong);
+	private FlipperLeft lflip = new FlipperLeft(190, 640, Color.BLACK, this, pinball);
+	private FlipperRight rflip = new FlipperRight(350, 640, Color.BLACK, this, pinball);
 	
 	public void keyPressed(KeyEvent s)
 	{
 		if(s.getKeyChar() == 's')
 			sprong.springdown();
+		if(s.getKeyChar() == 'a')
+			lflip.goUp();
+		if(s.getKeyChar() == 'd')
+			rflip.goUp();
 	}
 	public void keyReleased(KeyEvent s)
 	{
 		if(s.getKeyChar() == 's')
 			sprong.release();
+		if(s.getKeyChar() == 'a')
+			lflip.goDown();
+		if(s.getKeyChar() == 'd')
+			rflip.goDown();
 	}
 	    
 	public void init()
@@ -72,6 +82,8 @@ public class Board extends GraphicsProgram {
         add(background);
         add(curvedWall);
         add(bars);
+        add(lflip);
+        add(rflip);
     	add(pinball);
         add(sprong);
         add(spring);
@@ -90,6 +102,8 @@ public class Board extends GraphicsProgram {
         {
             pause(tick);
             pinball.moved(gravconstant); 
+            lflip.move();
+            rflip.move();
         }
     }
     

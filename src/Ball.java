@@ -36,6 +36,18 @@ public class Ball extends GOval{
 		double change=constant / 1000;
 		YVelocity = YVelocity + change;
 	}
+	public double getXVel()
+	{
+		return XVelocity;
+	}
+	public double getYVel()
+	{
+		return YVelocity;
+	}
+	public void changeVel(double x, double y){
+		XVelocity=XVelocity+x;
+		YVelocity=YVelocity+y;
+	}
 	public void boundaryHit(){
 		
 		if(getY() + getHeight() >= (myBoard.getHeight() - 51) && YVelocity > 0)
@@ -124,4 +136,5 @@ public class Ball extends GOval{
 			launch();
 		}
 	}
+	
 }
