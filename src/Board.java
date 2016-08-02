@@ -20,7 +20,7 @@ public class Board extends GraphicsProgram {
     private CircleBumper circleBumper10;
     private CircleBumper circleBumper25;
     
-	private GOval hitOval = new GOval(43, 51, 454, 714); 
+	private GOval hitOval = new GOval(43, 51, 454, 700); 
 
     public static void main(String[] args)
     {
@@ -72,6 +72,7 @@ public class Board extends GraphicsProgram {
     	add(pinball);
         add(sprong);
         add(spring);
+        add(hitOval);
     }
 
     public void run()
@@ -91,6 +92,11 @@ public class Board extends GraphicsProgram {
     public SideBars getSideBars()
     {
     	return sideBars;
+    }
+    
+    public GOval getMyhitOval()
+    {
+        return hitOval;
     }
 
 }
