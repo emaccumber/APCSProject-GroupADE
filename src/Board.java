@@ -73,6 +73,7 @@ public class Board extends GraphicsProgram {
     	add(pinball);
         add(sprong);
         add(spring);
+        add(hitOval);
     }
 
     public void run()
