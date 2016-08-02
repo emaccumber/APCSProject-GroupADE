@@ -6,12 +6,19 @@ import acm.graphics.GOval;
 //Aug 2016
 //
 public class Ball extends GOval{
-	double XVelocity;
-	double YVelocity;
-	double power;
-	Board board;
-	Spring sprong;
-	boolean springed = false;
+	private double XVelocity;
+	private double YVelocity;
+	private double power;
+	private Board board;
+	private Spring sprong;
+	private boolean springed = false;
+	
+	private double tanSlope; 
+	private double xToUse = getX() - 227;
+	private double yToUse = getY() + 357.1; 
+	private double d; 
+	private double b; 
+	
 	public Ball(double x, double y, Color c, double r, double xVel, double yVel, Board box, Spring spring)
 	    {
 	        super(x, y, 2*r, 2*r);
@@ -30,7 +37,7 @@ public class Ball extends GOval{
 	}
 	public void boundaryHit(){
 		
-		if(getY() + getHeight() >= board.getHeight() && YVelocity > 0)
+		/*if(getY() + getHeight() >= board.getHeight() && YVelocity > 0)
 		{
 			YVelocity = YVelocity * -1;
 		}
@@ -53,9 +60,16 @@ public class Ball extends GOval{
 		{
           XVelocity = -XVelocity;
 		}
-		
+		*/
 		if (!board.getMyhitOval().contains(getX(), getY()))
 		{
+			
+			tanSlope = (-1) / ((-12755 * xToUse) / (5153 * yToUse)); 
+			b = yToUse - tanSlope * xToUse; 
+			d = (xToUse + (yToUse - b) * tanSlope) / (1 + tanSlope * tanSlope); 
+			
+			XVelocity = 2 * d - xToUse;
+			YVelocity = 2 * d * tanSlope - yToUse + 2 * b; 
 			
 		}
           
