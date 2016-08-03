@@ -1,10 +1,11 @@
+/**
+ * Created by Abim, David and Ethan
+ * AP Computer Science
+ * August 2016
+ */
 import acm.graphics.GImage;
 import acm.graphics.GOval;
 import acm.graphics.GPolygon;
-
-/**
- * Created by davidmaccumber on 8/1/16.
- */
 public class CurvedWall extends GPolygon {
 
     private Board myBoard;

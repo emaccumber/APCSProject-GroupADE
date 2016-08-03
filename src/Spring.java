@@ -1,6 +1,7 @@
 /**
- * Created by Abim, David and Ethan on 8/1/16
+ * Created by Abim, David and Ethan
  * AP Computer Science
+ * August 2016
  */
 import acm.graphics.GRect;
 import java.awt.Color;

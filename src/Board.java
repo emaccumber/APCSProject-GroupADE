@@ -1,6 +1,7 @@
 /**
- * Created by Abim, David and Ethan on 7/27/16
+ * Created by Abim, David and Ethan
  * AP Computer Science
+ * August 2016
  */
 import acm.graphics.GImage;
 import acm.graphics.GOval;
@@ -35,26 +36,26 @@ public class Board extends GraphicsProgram {
 	double tick = .001;
 	double gravconstant = 3;
 	private Spring sprong = new Spring(6, 40, this, 477, 705);
-	private Ball pinball = new Ball(479, 200, pb, 8, 0, 0, this, sprong);
+	private Ball pinball = new Ball(200, 200, pb, 8, 0, 0, this, sprong);
 	private FlipperLeft lflip = new FlipperLeft(190, 640, Color.BLACK, this, pinball);
 	private FlipperRight rflip = new FlipperRight(350, 640, Color.BLACK, this, pinball);
 	
 	public void keyPressed(KeyEvent s)
 	{
-		if(s.getKeyChar() == 's')
+		if (s.getKeyChar() == 's')
 			sprong.springdown();
-		if(s.getKeyChar() == 'a')
+		if (s.getKeyChar() == 'a')
 			lflip.goUp();
-		if(s.getKeyChar() == 'd')
+		if (s.getKeyChar() == 'd')
 			rflip.goUp();
 	}
 	public void keyReleased(KeyEvent s)
 	{
-		if(s.getKeyChar() == 's')
+		if (s.getKeyChar() == 's')
 			sprong.release();
-		if(s.getKeyChar() == 'a')
+		if (s.getKeyChar() == 'a')
 			lflip.goDown();
-		if(s.getKeyChar() == 'd')
+		if (s.getKeyChar() == 'd')
 			rflip.goDown();
 	}
 	    

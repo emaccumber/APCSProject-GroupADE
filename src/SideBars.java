@@ -1,9 +1,11 @@
+/**
+ * Created by Abim, David and Ethan
+ * AP Computer Science
+ * August 2016
+ */
 import acm.graphics.GImage;
 import acm.graphics.GRect;
 
-/**
- * Created by davidmaccumber on 8/1/16.
- */
 public class SideBars extends GRect {
 
     private Board myBoard;
