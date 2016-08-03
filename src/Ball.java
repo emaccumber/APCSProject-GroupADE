@@ -74,7 +74,17 @@ public class Ball extends GOval{
 		{
           XVelocity = -XVelocity;
 		}
-				
+		
+		if ((getY() + getHeight() <= myBoard.getSideBars().getY() 
+				&& getY() + getHeight() < myBoard.getSideBars().getHeight() / 2)
+				&& getX() < myBoard.getSideBars().getX() + myBoard.getSideBars().getWidth())
+			YVelocity = -YVelocity;
+		
+		if ((getY() >= myBoard.getSideBars().getY() + myBoard.getSideBars().getHeight() 
+				&& getY() > myBoard.getSideBars().getHeight())
+				&& getX() < myBoard.getSideBars().getX() + myBoard.getSideBars().getWidth())
+			YVelocity = -YVelocity;
+				 
 		
 		if (!Board.getMyHitOval().contains(getX() + 8, getY() + 8 ) && getY() < 400 && getX() > 268) //ask why getmyhitoval has to be static
 		{
@@ -82,6 +92,8 @@ public class Ball extends GOval{
 			XVelocity -= .2;
 			YVelocity += .2 * tanSlope;
 		}
+		
+		if 
 	}
 	
 	public void launch()

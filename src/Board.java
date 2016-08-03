@@ -146,4 +146,10 @@ public class Board extends GraphicsProgram {
     {
         return scoreBoard;
     }
+    
+    public Bar getMyBar1;
+    {
+   
+    }
+    
 }
