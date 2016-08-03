@@ -23,10 +23,15 @@ public class Board extends GraphicsProgram {
     private CircleBumper circleBumper50;
     private CircleBumper circleBumper10;
     private CircleBumper circleBumper25;
+    private Bar bar1;
+    private Bar bar2;
+    private Bar bar3;
+    private Bar bar4;
+    
     
 	private GOval hitOval = new GOval(43, 51, 454, 700); 
 
-    public static void main(String[] args)
+    public static void main(String[] args) 		// in case you want to run as application rather than applet 
     {
         new Board().start();
     }
@@ -68,6 +73,15 @@ public class Board extends GraphicsProgram {
         spring = new GImage("Spring.png", 0, 0);
         spring.setSize(getWidth(), getHeight());
         
+        bar1 = new Bar(95, 106, 14, 44);
+        	bar1.setVisible(false);
+        bar2 = new Bar(152, 106, 14, 44);
+        	bar2.setVisible(false);
+        bar3 = new Bar(207, 106, 14, 44);
+        	bar3.setVisible(false);
+        bar4 = new Bar(263, 106, 14, 44);
+        	bar4.setVisible(false);
+        
         scoreBoard = new Score("0000", 206, 43);
         
         curvedWall = new GImage("CurvedWall.png", 0, 0);
@@ -90,6 +104,10 @@ public class Board extends GraphicsProgram {
         add(spring);
         add(hitOval);
         add(scoreBoard);
+        add(bar1);
+        add(bar2);
+        add(bar3);
+        add(bar4);
     }
 
     public void run()

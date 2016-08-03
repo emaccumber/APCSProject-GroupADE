@@ -79,6 +79,8 @@ public class Ball extends GOval{
           XVelocity = -XVelocity;
 		}
 		
+		
+		
 	/*	if (!board.getMyhitOval().contains(getX(), getY()))
 		{
 			
