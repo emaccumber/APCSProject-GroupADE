@@ -68,7 +68,7 @@ public class FlipperRight extends GPolygon{
 		{
 			ydown = ydown * -1;
 		}
-		if (x >= getX() - 60
+		if (x >= getX() - 55
 				&& x <= getX()
 				&& y >= ydown
 				&& y <= ydown + 20)

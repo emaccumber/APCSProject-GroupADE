@@ -15,6 +15,7 @@ import acm.program.GraphicsProgram;
 public class Board extends GraphicsProgram {
 
     private GImage background;
+    private GImage border;
     private GImage curvedWall;
     private GImage bars;
     private GImage spring;
@@ -39,9 +40,12 @@ public class Board extends GraphicsProgram {
 	double tick = .001;
 	double gravconstant = 3;
 	private Spring sprong = new Spring(6, 40, this, 477, 705);
-	private Ball pinball = new Ball(477, 600, pb, 8, 0, 0, this, sprong);
+	private Ball pinball = new Ball(472, 680, pb, 8, 0, 0, this, sprong);
 	private FlipperLeft lflip = new FlipperLeft(190, 640, Color.BLACK, this, pinball);
 	private FlipperRight rflip = new FlipperRight(350, 640, Color.BLACK, this, pinball);
+	
+	private LTriangle ltri = new LTriangle(45, 647, Color.BLACK, this, pinball);
+	private RTriangle rtri = new RTriangle(461, 670, Color.BLACK, this, pinball);
 	
 	public void keyPressed(KeyEvent s)
 	{
@@ -67,18 +71,18 @@ public class Board extends GraphicsProgram {
     	addKeyListeners(this);
     	setSize(536, 800);
         background = new GImage("Background.png");
+        	background.setSize(getWidth(), getHeight());
+        border = new GImage("Border.png");
+        	border.setSize(getWidth(), getHeight());
         background.setSize(getWidth(), getHeight());
         spring = new GImage("Spring.png", 0, 0);
         spring.setSize(getWidth(), getHeight());
         
-        bar1 = new Bar(95, 106, 14, 44);
-        	bar1.setVisible(false);
-        bar2 = new Bar(152, 106, 14, 44);
-        	bar2.setVisible(false);
-        bar3 = new Bar(207, 106, 14, 44);
-        	bar3.setVisible(false);
-        bar4 = new Bar(263, 106, 14, 44);
-        	bar4.setVisible(false);
+        bar1 = new Bar(93, 104, 17, 48);    
+        bar2 = new Bar(150, 104, 17, 48);        
+        bar3 = new Bar(205, 104, 17, 48);       
+        bar4 = new Bar(261, 104, 17, 48);
+        
 
         hitOval = new GOval(43, 51, 454, 700);
         hitOval.setVisible(false); 
@@ -87,9 +91,9 @@ public class Board extends GraphicsProgram {
         
         curvedWall = new GImage("CurvedWall.png", 0, 0);
 
-        circleBumper50 = new CircleBumper(278, 238, 25, "CircleBumper50.png", this, pinball);
-        circleBumper25 = new CircleBumper(146, 294, 25, "CircleBumper25.png", this, pinball);
-        circleBumper10 = new CircleBumper(270, 374, 25, "CircleBumper10.png", this, pinball);
+        circleBumper50 = new CircleBumper(278, 238, 25, "CircleBumper50.png", this, pinball, scoreBoard, 50);
+        circleBumper25 = new CircleBumper(146, 294, 25, "CircleBumper25.png", this, pinball, scoreBoard, 25);
+        circleBumper10 = new CircleBumper(270, 374, 25, "CircleBumper10.png", this, pinball, scoreBoard, 10);
         
         bars = new GImage("Bars.png", 0, 0);
         bars.setSize(getWidth(), getHeight());
@@ -104,11 +108,14 @@ public class Board extends GraphicsProgram {
         add(sprong);
         add(spring);
         add(hitOval);
-        add(scoreBoard);
         add(bar1);
         add(bar2);
         add(bar3);
         add(bar4);
+        add(ltri);
+        add(rtri);
+        add(border);
+        add(scoreBoard);
     }
 
     public void run()
@@ -127,6 +134,8 @@ public class Board extends GraphicsProgram {
             circleBumper10.checkForHits();
             circleBumper25.checkForHits();
             circleBumper50.checkForHits();
+            ltri.checkForHits();
+            rtri.checkForHits();
         }
     }
     
@@ -145,9 +154,24 @@ public class Board extends GraphicsProgram {
         return scoreBoard;
     }
     
-    public Bar getMyBar1;
+    public Bar getBar1()
     {
-   
+    	return bar1;
+    }
+    
+    public Bar getBar2()
+    {
+    	return bar2;
+    }
+    
+    public Bar getBar3()
+    {
+    	return bar3;
+    }
+    
+    public Bar getBar4()
+    {
+    	return bar4;
     }
     
 }

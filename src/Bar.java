@@ -10,6 +10,7 @@ public class Bar extends GRect {
 	public Bar(double x, double y, double w, double h)
     {
         super(x, y, w, h);
+        setVisible(false);
     }
 
 }

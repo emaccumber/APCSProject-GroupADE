@@ -10,6 +10,7 @@ public class CircleBumper extends GOval {
 
     private Board myBoard;
     private GImage bumperGImage;
+    private Score scor;
     Ball ball;
 	double xch;
 	double ych;
@@ -18,9 +19,10 @@ public class CircleBumper extends GOval {
 	double tch;
 	double angl;
 	double totalvel;
+	int adding;
 	public boolean debounce=false;
 
-    public CircleBumper(double x, double y, double r, String bumperImage, Board board, Ball target)
+    public CircleBumper(double x, double y, double r, String bumperImage, Board board, Ball target, Score scoreboard, int scoreadd)
     {
         super(x, y, 2*r, 2*r);
         myBoard = board;
@@ -28,6 +30,8 @@ public class CircleBumper extends GOval {
         bumperGImage.setSize(2*r, 2*r);
         setVisible(false); 			// sets the GOval for each bumper as invisible
         ball = target;
+        scor = scoreboard;
+        adding = scoreadd;
     }
 
     public void showBumper()
@@ -87,6 +91,7 @@ public class CircleBumper extends GOval {
 					xvel = xvel * -1;
 				}
 				ball.changeVel(1.8*xvel, 1.8*yvel);
+				scor.add(adding);
 				
 			}
 		}
