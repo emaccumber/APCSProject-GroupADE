@@ -86,7 +86,7 @@ public class Ball extends GOval{
 			YVelocity = -YVelocity;
 				 
 		
-		if (!Board.getMyHitOval().contains(getX() + 8, getY() + 8 ) && getY() < 400 && getX() > 268) //ask why getmyhitoval has to be static
+		if (!myBoard.getHitOval().contains(getX() + 8, getY() + 8 ) && getY() < 400 && getX() > 268) 
 		{
 			tanSlope = ((-1) / ((-12755 * getX() + 2895385) / (5153 * -getY() + 1839621)));
 			XVelocity -= .2;
