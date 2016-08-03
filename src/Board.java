@@ -24,7 +24,7 @@ public class Board extends GraphicsProgram {
     private CircleBumper circleBumper10;
     private CircleBumper circleBumper25;
     
-	private GOval hitOval = new GOval(43, 51, 454, 700); 
+	private static GOval hitOval = new GOval(43, 51, 454, 700);  //is it ok to make this static 
 
     public static void main(String[] args)
     {
@@ -36,7 +36,7 @@ public class Board extends GraphicsProgram {
 	double tick = .001;
 	double gravconstant = 3;
 	private Spring sprong = new Spring(6, 40, this, 477, 705);
-	private Ball pinball = new Ball(200, 200, pb, 8, 0, 0, this, sprong);
+	private Ball pinball = new Ball(477, 600, pb, 8, 0, 0, this, sprong);
 	private FlipperLeft lflip = new FlipperLeft(190, 640, Color.BLACK, this, pinball);
 	private FlipperRight rflip = new FlipperRight(350, 640, Color.BLACK, this, pinball);
 	
@@ -113,7 +113,7 @@ public class Board extends GraphicsProgram {
     	return sideBars;
     }
     
-    public GOval getMyhitOval()
+    public static GOval getMyHitOval()
     {
         return hitOval;
     }

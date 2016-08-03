@@ -15,10 +15,6 @@ public class Ball extends GOval{
 	private boolean springed = false;
 	
 	private double tanSlope; 
-	private double xToUse = getX() - 227;
-	private double yToUse = getY() + 357.1; 
-	private double d; 
-	private double b; 
 	
 	public Ball(double x, double y, Color c, double r, double xVel, double yVel, Board box, Spring spring)
 	    {
@@ -79,17 +75,15 @@ public class Ball extends GOval{
           XVelocity = -XVelocity;
 		}
 		
-	/*	if (!board.getMyhitOval().contains(getX(), getY()))
+		if (!Board.getMyHitOval().contains(getX() + 8, getY() + 8 ) && getY() < 400 && getX() > 268) //ask why getmyhitoval has to be static
 		{
-			
-			tanSlope = (-1) / ((-12755 * xToUse) / (5153 * yToUse)); 
-			b = yToUse - tanSlope * xToUse; 
-			d = (xToUse + (yToUse - b) * tanSlope) / (1 + tanSlope * tanSlope); 
-			
-			XVelocity = 2 * d - xToUse;
-			YVelocity = 2 * d * tanSlope - yToUse + 2 * b;  
-			
-		} */    	
+			tanSlope = ((-1) / ((-12755 * getX() + 2895385) / (5153 * -getY() + 1839621)));
+			XVelocity -= .2;
+			YVelocity += .2 * tanSlope;
+		}
+		
+		
+	
 	}
 	
 	public void launch()
