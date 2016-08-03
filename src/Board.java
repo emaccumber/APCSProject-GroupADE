@@ -27,9 +27,7 @@ public class Board extends GraphicsProgram {
     private Bar bar2;
     private Bar bar3;
     private Bar bar4;
-    
-    
-	private static GOval hitOval;  //is it ok to make this static 
+	private GOval hitOval; 
 
     public static void main(String[] args) 		// in case you want to run as application rather than applet 
     {
@@ -137,7 +135,7 @@ public class Board extends GraphicsProgram {
     	return sideBars;
     }
     
-    public static GOval getMyHitOval()
+    public GOval getHitOval()
     {
         return hitOval;
     }
