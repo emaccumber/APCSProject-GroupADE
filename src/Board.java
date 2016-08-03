@@ -24,7 +24,7 @@ public class Board extends GraphicsProgram {
     private CircleBumper circleBumper10;
     private CircleBumper circleBumper25;
     
-	private static GOval hitOval = new GOval(43, 51, 454, 700);  //is it ok to make this static 
+	private static GOval hitOval;  //is it ok to make this static 
 
     public static void main(String[] args)
     {
@@ -67,6 +67,9 @@ public class Board extends GraphicsProgram {
         background.setSize(getWidth(), getHeight());
         spring = new GImage("Spring.png", 0, 0);
         spring.setSize(getWidth(), getHeight());
+        
+        hitOval = new GOval(43, 51, 454, 700);
+        hitOval.setVisible(false); 
         
         scoreBoard = new Score("0000", 206, 43);
         
