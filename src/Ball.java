@@ -13,7 +13,7 @@ public class Ball extends GOval{
 	private Board myBoard;
 	private Spring sprong;
 	private boolean springed = false;
-	
+	private double spcp = 3;
 	private double tanSlope; 
 	
 	public Ball(double x, double y, Color c, double r, double xVel, double yVel, Board box, Spring spring)
@@ -82,9 +82,6 @@ public class Ball extends GOval{
 			XVelocity -= .2;
 			YVelocity += .2 * tanSlope;
 		}
-		
-		
-	
 	}
 	
 	public void launch()
@@ -112,6 +109,18 @@ public class Ball extends GOval{
 		super.setSize(size, size / 2);
 	}
 	
+	public void speedCap()
+	{
+		if (XVelocity > spcp)
+			XVelocity = spcp;
+		if (YVelocity > spcp)
+			YVelocity = spcp;
+		if(XVelocity < -spcp)
+			XVelocity = -spcp;
+		if(YVelocity < -spcp)
+			YVelocity = -spcp;
+	}
+	
 	public void moved(double constant)
 	{
 		if (!springed)
@@ -119,6 +128,7 @@ public class Ball extends GOval{
 			gravitAdd(constant);
 			boundaryHit();
 			airResist();
+			speedCap();
 		}
 		if (!(getY() + getHeight() >= sprong.getY() && getX() >= sprong.getX() - 5 
 				&& getX() <= sprong.getX() + sprong.getWidth() 
@@ -138,6 +148,5 @@ public class Ball extends GOval{
 		{
 			launch();
 		}
-	}
-	
+	}	
 }

@@ -126,6 +126,9 @@ public class Board extends GraphicsProgram {
             pinball.moved(gravconstant); 
             lflip.move();
             rflip.move();
+            circleBumper10.checkForHits();
+            circleBumper25.checkForHits();
+            circleBumper50.checkForHits();
         }
     }
     
