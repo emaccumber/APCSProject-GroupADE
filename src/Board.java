@@ -19,6 +19,7 @@ public class Board extends GraphicsProgram {
     private GImage curvedWall;
     private GImage bars;
     private GImage spring;
+    private GImage sideWalls;
     private SideBars sideBars;
     private Score scoreBoard;
     private CircleBumper circleBumper50;
@@ -37,13 +38,14 @@ public class Board extends GraphicsProgram {
     
     Color pb = new Color(0, 0, 0);
 	Color sp = new Color(125, 125, 125);
-	double tick = .001;
+	double tick = 1;
 	double gravconstant = 3;
 	private Spring sprong = new Spring(6, 40, this, 477, 705);
 	private Ball pinball = new Ball(472, 680, pb, 8, 0, 0, this, sprong);
-	private FlipperLeft lflip = new FlipperLeft(190, 640, Color.BLACK, this, pinball);
-	private FlipperRight rflip = new FlipperRight(350, 640, Color.BLACK, this, pinball);
-	
+	private FlipperLeft lflip = new FlipperLeft(190, 660, Color.BLACK, this, pinball);
+	private FlipperRight rflip = new FlipperRight(350, 660, Color.BLACK, this, pinball);
+	private RightBarrier rBar = new RightBarrier(450, 620, Color.BLACK, this, pinball);
+	private LeftBarrier lBar = new LeftBarrier(90, 620, Color.BLACK, this, pinball);
 	private LTriangle ltri = new LTriangle(45, 647, Color.BLACK, this, pinball);
 	private RTriangle rtri = new RTriangle(461, 670, Color.BLACK, this, pinball);
 	
@@ -77,11 +79,12 @@ public class Board extends GraphicsProgram {
         background.setSize(getWidth(), getHeight());
         spring = new GImage("Spring.png", 0, 0);
         spring.setSize(getWidth(), getHeight());
+        sideWalls = new GImage("SideWalls.png", 0, 0);
         
-        bar1 = new Bar(93, 104, 17, 48);    
-        bar2 = new Bar(150, 104, 17, 48);        
-        bar3 = new Bar(205, 104, 17, 48);       
-        bar4 = new Bar(261, 104, 17, 48);
+        bar1 = new Bar(93, 112, 17, 48);    
+        bar2 = new Bar(150, 112, 17, 48);        
+        bar3 = new Bar(205, 112, 17, 48);       
+        bar4 = new Bar(261, 112, 17, 48);
         
 
         hitOval = new GOval(43, 51, 454, 700);
@@ -95,7 +98,7 @@ public class Board extends GraphicsProgram {
         circleBumper25 = new CircleBumper(146, 294, 25, "CircleBumper25.png", this, pinball, scoreBoard, 25);
         circleBumper10 = new CircleBumper(270, 374, 25, "CircleBumper10.png", this, pinball, scoreBoard, 10);
         
-        bars = new GImage("Bars.png", 0, 0);
+        bars = new GImage("Bars.png", 0, 8);
         bars.setSize(getWidth(), getHeight());
         sideBars = new SideBars(55, 340, 11, 134, "SideBars.png", this);
         
@@ -104,6 +107,7 @@ public class Board extends GraphicsProgram {
         add(bars);
         add(lflip);
         add(rflip);
+        add(sideWalls);
     	add(pinball);
         add(sprong);
         add(spring);
@@ -116,6 +120,8 @@ public class Board extends GraphicsProgram {
         add(rtri);
         add(border);
         add(scoreBoard);
+        add(lBar);
+        add(rBar);
     }
 
     public void run()
@@ -131,11 +137,13 @@ public class Board extends GraphicsProgram {
             pinball.moved(gravconstant); 
             lflip.move();
             rflip.move();
-            circleBumper10.checkForHits();
+            circleBumper10.checkForHits();    
             circleBumper25.checkForHits();
             circleBumper50.checkForHits();
             ltri.checkForHits();
             rtri.checkForHits();
+            rBar.checkForHits();
+            lBar.checkForHits();
         }
     }
     
