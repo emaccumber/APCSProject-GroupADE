@@ -39,7 +39,7 @@ public class RightBarrier extends GPolygon{
 		{
 			ydown = ydown * -1;
 		}
-		if (x >= getX() - 80
+		if (x >= getX() - 100
 				&& x <= getX()
 				&& y >= ydown
 				&& y <= ydown + 10)
