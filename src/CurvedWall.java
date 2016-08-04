@@ -14,7 +14,5 @@ public class CurvedWall extends GPolygon {
     public CurvedWall(double x, double y)
     {
         super(x, y);
-    }
-    
-    
+    }    
 }

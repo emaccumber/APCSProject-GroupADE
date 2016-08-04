@@ -7,16 +7,18 @@ import acm.graphics.GRect;
 import java.awt.Color;
 public class Spring extends GRect
 {
-	double ySet;
-	double strength = 0;
-	int pulled = 0;
+	private double ySet;
+	protected double strength = 0;
+	protected int pulled = 0;
+	
 	public Spring(double xS, double yS, Board board, double xP, double yP) 
 	{
 		super(xP, yP, xS, yS);
 		setVisible(false);
 		ySet = yS;
 	}
-	public void springdown(){
+	
+	public void springdown() {
 		pulled = 1;
 		if(getHeight() > 6)
 		{
@@ -29,7 +31,9 @@ public class Spring extends GRect
 			move(0, 2);
 		}
 	}
-	public void release(){
+	
+	public void release() {
+	
 		pulled = 0;
 		double sizechange = ySet - getHeight();
 		

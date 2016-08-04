@@ -5,6 +5,7 @@
 import java.awt.Color;
 import acm.graphics.GPolygon;
 public class FlipperLeft extends GPolygon {
+	
 	private double xpos;
 	private double ypos;
 	private Board board;
@@ -34,6 +35,7 @@ public class FlipperLeft extends GPolygon {
         flip = -30;
         rotate(-30);
 	}
+	
 	public void checkForHits()
 	{
 		if (hitbox(pin.getX() + (pin.getWidth() / 2), pin.getY() + pin.getHeight())
@@ -60,32 +62,38 @@ public class FlipperLeft extends GPolygon {
 			debounce=false;
 		}
 	}
+	
 	public boolean hitbox(double x, double y)
 	{
 		xdist = getX() - x;
 		ydown = getY() + (flip * 2/100) * xdist;
-		if(ydown < 0){
+		
+		if (ydown < 0){
 			ydown=ydown * -1;
 		}
-		if(x <= getX() + 55
+		if (x <= getX() + 55
 				&& x >= getX()
 				&& y >= ydown
 				&& y <= ydown+20){
 			return true;
 		}
+		
 		else
 		{
 			return false;
 		}
 	}
+	
 	public void goUp()
 	{
 		up = true;
 	}
+	
 	public void goDown()
 	{
 		up = false;
 	}
+	
 	public void flipup()
 	{
 		if (flip<=25&&up)
@@ -94,6 +102,7 @@ public class FlipperLeft extends GPolygon {
 			flip = flip + 5;
 		}
 	}
+	
 	public void release()
 	{
 		if (flip >= -30 && !up)
@@ -102,6 +111,7 @@ public class FlipperLeft extends GPolygon {
 			flip = flip - 1;
 		}
 	}
+	
 	public void move()
 	{
 		flipup();

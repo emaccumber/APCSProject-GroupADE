@@ -8,6 +8,7 @@ import java.awt.Color;
 import acm.graphics.GPolygon;
 
 public class FlipperRight extends GPolygon{
+	
 	private double xpos;
 	private double ypos;
 	private Board board;
@@ -50,24 +51,29 @@ public class FlipperRight extends GPolygon{
 			yvel = yvel * totalvel;
 			xvel = Math.cos(angle);
 			xvel = xvel * totalvel;
+			
 			if (flip >= -25 && up && pin.getYVel() > 0)
 			{				
 				pin.changeVel(3 * xvel, 3 * yvel);
 			}
+			
 			else
 			{
 				pin.changeVel(1.5 * xvel, -1.5 * yvel);
 			}
 		}
 	}
+	
 	public boolean hitbox(double x, double y)
 	{
 		xdist = getX() - x;
 		ydown = getY() + (flip * 2/100) * xdist;
+		
 		if (ydown < 0)
 		{
 			ydown = ydown * -1;
 		}
+		
 		if (x >= getX() - 55
 				&& x <= getX()
 				&& y >= ydown
@@ -75,6 +81,7 @@ public class FlipperRight extends GPolygon{
 		{
 			return true;
 		}
+		
 		else
 		{
 			return false;

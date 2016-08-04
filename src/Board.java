@@ -29,9 +29,12 @@ public class Board extends GraphicsProgram {
     private Bar bar2;
     private Bar bar3;
     private Bar bar4;
+    private Bar rightSideBar;
+    private Bar leftSideBar;
 	private GOval hitOval; 
 
-    public static void main(String[] args) 		// in case you want to run as application rather than applet 
+	// in case you want to run as application rather than applet 
+    public static void main(String[] args) 		
     {
         new Board().start();
     }
@@ -42,13 +45,14 @@ public class Board extends GraphicsProgram {
 	double gravconstant = 3;
 	private Spring sprong = new Spring(6, 40, this, 477, 705);
 	private Ball pinball = new Ball(472, 680, pb, 8, 0, 0, this, sprong);
-	private FlipperLeft lflip = new FlipperLeft(190, 660, Color.BLACK, this, pinball);
-	private FlipperRight rflip = new FlipperRight(350, 660, Color.BLACK, this, pinball);
-	private RightBarrier rBar = new RightBarrier(450, 620, Color.BLACK, this, pinball);
-	private LeftBarrier lBar = new LeftBarrier(90, 620, Color.BLACK, this, pinball);
+	private FlipperLeft lflip = new FlipperLeft(186, 658, Color.BLACK, this, pinball);
+	private FlipperRight rflip = new FlipperRight(351, 658, Color.BLACK, this, pinball);
+	private RightBarrier rBar = new RightBarrier(444, 616, Color.BLACK, this, pinball);
+	private LeftBarrier lBar = new LeftBarrier(92, 616, Color.BLACK, this, pinball);
 	private LTriangle ltri = new LTriangle(45, 647, Color.BLACK, this, pinball);
 	private RTriangle rtri = new RTriangle(461, 670, Color.BLACK, this, pinball);
 	
+	// listens for key presses 
 	public void keyPressed(KeyEvent s)
 	{
 		if (s.getKeyChar() == 's')
@@ -58,7 +62,8 @@ public class Board extends GraphicsProgram {
 		if (s.getKeyChar() == 'd')
 			rflip.goUp();
 	}
-	public void keyReleased(KeyEvent s)
+	// listens for key releases
+public void keyReleased(KeyEvent s)
 	{
 		if (s.getKeyChar() == 's')
 			sprong.release();
@@ -73,9 +78,9 @@ public class Board extends GraphicsProgram {
     	addKeyListeners(this);
     	setSize(536, 800);
         background = new GImage("Background.png");
-        	background.setSize(getWidth(), getHeight());
+        background.setSize(getWidth(), getHeight());
         border = new GImage("Border.png");
-        	border.setSize(getWidth(), getHeight());
+        border.setSize(getWidth(), getHeight());
         background.setSize(getWidth(), getHeight());
         spring = new GImage("Spring.png", 0, 0);
         spring.setSize(getWidth(), getHeight());
@@ -85,6 +90,9 @@ public class Board extends GraphicsProgram {
         bar2 = new Bar(150, 112, 17, 48);        
         bar3 = new Bar(205, 112, 17, 48);       
         bar4 = new Bar(261, 112, 17, 48);
+        
+        rightSideBar = new Bar(445, 517, 9, 103);
+        leftSideBar = new Bar(83, 517, 9, 103);
         
 
         hitOval = new GOval(43, 51, 454, 700);
@@ -122,6 +130,8 @@ public class Board extends GraphicsProgram {
         add(scoreBoard);
         add(lBar);
         add(rBar);
+        add(rightSideBar);
+        add(leftSideBar);
     }
 
     public void run()
@@ -182,4 +192,13 @@ public class Board extends GraphicsProgram {
     	return bar4;
     }
     
+    public Bar getLeftSideBar()
+    {
+    	return leftSideBar;
+    }
+    
+    public Bar getRightSideBar()
+    {
+    	return rightSideBar;
+    }  
 }

@@ -45,12 +45,13 @@ public class Ball extends GOval{
 	}
 	
 	public void changeVel(double x, double y){
-		XVelocity=XVelocity+x;
-		YVelocity=YVelocity+y;
+		
+		XVelocity = XVelocity+x;
+		YVelocity = YVelocity+y;
 	}
 	
-	public void boundaryHit(){
-		
+	private void borderHit()
+	{
 		if (getY() + getHeight() >= (myBoard.getHeight() - 51) && YVelocity > 0)
 		{ 
 			YVelocity = YVelocity * -1;
@@ -67,7 +68,10 @@ public class Ball extends GOval{
 		{
 			XVelocity = XVelocity * -1;
 		}
-		
+	}
+	
+	private void sideBarHit()
+	{
 		if ((getX() <= (myBoard.getSideBars().getX() + myBoard.getSideBars().getWidth())) 
 				&& (getY() > myBoard.getSideBars().getY() 
 						&& (getY() + getHeight() - 2) < (myBoard.getSideBars().getY() + myBoard.getSideBars().getHeight())))
@@ -84,236 +88,198 @@ public class Ball extends GOval{
 				&& (getY() >  (myBoard.getSideBars().getY() + myBoard.getSideBars().getHeight() - 34 )))
 			
 			YVelocity = -YVelocity;
-				 
+	}
+	
+	private void curvedWallHit()
+	{
 		if (!myBoard.getHitOval().contains(getX() + 8, getY() + 8 ) && getY() < 400 && getX() > 268) 
 		{
 			tanSlope = ((-1) / ((-12755 * getX() + 2895385) / (5153 * -getY() + 1839621)));
 			XVelocity -= .2;
 			YVelocity += .2 * tanSlope;
 		}
-		
-		// bar1
-		
-		if (getX() <= myBoard.getBar1().getX() + myBoard.getBar1().getWidth() 
-				&& getY() + getHeight() > myBoard.getBar1().getY() 
-				&& getY() < myBoard.getBar1().getY() + myBoard.getBar1().getHeight()
-				&& getX() > myBoard.getBar1().getX() + myBoard.getBar1().getWidth() - 6)
-			XVelocity = -XVelocity;
-		
-		if (getX() + getWidth() >= myBoard.getBar1().getX()
-				&& getY() + getHeight() > myBoard.getBar1().getY() 
-				&& getY() < myBoard.getBar1().getY() + myBoard.getBar1().getHeight()
-				&& getX() + getWidth() < myBoard.getBar1().getX() + 6)
-			XVelocity = -XVelocity;
-		
-		if (getY() + getHeight() >= myBoard.getBar1().getY()
-				&& getX() < myBoard.getBar1().getX() + myBoard.getBar1().getWidth()
-				&& getX() + getWidth() > myBoard.getBar1().getX() 
-				&& getY() - getHeight() < myBoard.getBar1().getY() + 21)
-			YVelocity = -YVelocity;  
+	}
 	
-		if (getY() <= myBoard.getBar1().getY() + myBoard.getBar1().getHeight()
-				&& getX() < myBoard.getBar1().getX() + myBoard.getBar1().getWidth()
-				&& getX() - getWidth() > myBoard.getBar1().getX()
-				&& getY() > myBoard.getBar1().getY() + myBoard.getBar1().getHeight() - 21)
-			YVelocity = -YVelocity; 
+	private void fourBarsHit()
+	{
+				// bar1
 		
-		if (getY() + getHeight() == myBoard.getBar1().getY()
-				&& getX() == myBoard.getBar1().getX() + myBoard.getBar1().getWidth())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
+				if (getX() <= myBoard.getBar1().getX() + myBoard.getBar1().getWidth() 
+						&& getY() + getHeight() > myBoard.getBar1().getY() 
+						&& getY() < myBoard.getBar1().getY() + myBoard.getBar1().getHeight()
+						&& getX() > myBoard.getBar1().getX() + myBoard.getBar1().getWidth() - 6)
+					XVelocity = -XVelocity;
+				
+				if (getX() + getWidth() >= myBoard.getBar1().getX()
+						&& getY() + getHeight() > myBoard.getBar1().getY() 
+						&& getY() < myBoard.getBar1().getY() + myBoard.getBar1().getHeight()
+						&& getX() + getWidth() < myBoard.getBar1().getX() + 6)
+					XVelocity = -XVelocity;
+				
+				if (getY() + getHeight() >= myBoard.getBar1().getY()
+						&& getX() < myBoard.getBar1().getX() + myBoard.getBar1().getWidth()
+						&& getX() + getWidth() > myBoard.getBar1().getX() 
+						&& getY() - getHeight() < myBoard.getBar1().getY() + 21)
+					YVelocity = -YVelocity;  
+			
+				if (getY() <= myBoard.getBar1().getY() + myBoard.getBar1().getHeight()
+						&& getX() < myBoard.getBar1().getX() + myBoard.getBar1().getWidth()
+						&& getX() - getWidth() > myBoard.getBar1().getX()
+						&& getY() > myBoard.getBar1().getY() + myBoard.getBar1().getHeight() - 21)
+					YVelocity = -YVelocity; 
+				
+				
+				// bar 2
+				
+				if (getX() <= myBoard.getBar2().getX() + myBoard.getBar2().getWidth() 
+						&& getY() + getHeight() > myBoard.getBar2().getY() 
+						&& getY() < myBoard.getBar2().getY() + myBoard.getBar2().getHeight()
+						&& getX() > myBoard.getBar2().getX() + myBoard.getBar2().getWidth() - 6)
+					XVelocity = -XVelocity;
+				
+				if (getX() + getWidth() >= myBoard.getBar2().getX()
+						&& getY() + getHeight() > myBoard.getBar2().getY() 
+						&& getY() < myBoard.getBar2().getY() + myBoard.getBar2().getHeight()
+						&& getX() + getWidth() < myBoard.getBar2().getX() + 6)
+					XVelocity = -XVelocity;
+				
+				if (getY() + getHeight() >= myBoard.getBar2().getY()
+						&& getX() < myBoard.getBar2().getX() + myBoard.getBar2().getWidth()
+						&& getX() + getWidth() > myBoard.getBar2().getX()
+						&& getY() - getHeight() < myBoard.getBar2().getY() + 21)
+					YVelocity = -YVelocity; 
+				
+				if (getY() <= myBoard.getBar2().getY() + myBoard.getBar2().getHeight()
+						&& getX() < myBoard.getBar2().getX() + myBoard.getBar2().getWidth()
+						&& getX() - getWidth() > myBoard.getBar2().getX()
+						&& getY() > myBoard.getBar2().getY() + myBoard.getBar2().getHeight() - 21)
+					YVelocity = -YVelocity; 
+				
+				
+				// bar 3
+				
+				if (getX() <= myBoard.getBar3().getX() + myBoard.getBar3().getWidth() 
+						&& getY() + getHeight() > myBoard.getBar3().getY() 
+						&& getY() < myBoard.getBar3().getY() + myBoard.getBar3().getHeight()
+						&& getX() > myBoard.getBar3().getX() + myBoard.getBar3().getWidth() - 6)
+					XVelocity = -XVelocity;
+				
+				if (getX() + getWidth() >= myBoard.getBar3().getX()
+						&& getY() + getHeight() > myBoard.getBar3().getY() 
+						&& getY() < myBoard.getBar3().getY() + myBoard.getBar3().getHeight()
+						&& getX() + getWidth() < myBoard.getBar3().getX() + 6)
+					XVelocity = -XVelocity;
+				
+				if (getY() + getHeight() >= myBoard.getBar3().getY()
+						&& getX() < myBoard.getBar3().getX() + myBoard.getBar3().getWidth()
+						&& getX() + getWidth() > myBoard.getBar3().getX()
+						&& getY() - getHeight() < myBoard.getBar3().getY() + 21)
+					YVelocity = -YVelocity; 
+				
+				if (getY() <= myBoard.getBar3().getY() + myBoard.getBar3().getHeight()
+						&& getX() < myBoard.getBar3().getX() + myBoard.getBar3().getWidth()
+						&& getX() - getWidth() > myBoard.getBar3().getX()
+						&& getY() > myBoard.getBar3().getY() + myBoard.getBar3().getHeight() - 21)
+					YVelocity = -YVelocity; 
+				
+				
+				// bar4
+				
+				if (getX() <= myBoard.getBar4().getX() + myBoard.getBar4().getWidth() 
+						&& getY() + getHeight() > myBoard.getBar4().getY() 
+						&& getY() < myBoard.getBar4().getY() + myBoard.getBar4().getHeight()
+						&& getX() > myBoard.getBar4().getX() + myBoard.getBar4().getWidth() - 6)
+					XVelocity = -XVelocity;
+				
+				if (getX() + getWidth() >= myBoard.getBar4().getX()
+						&& getY() + getHeight() > myBoard.getBar4().getY() 
+						&& getY() < myBoard.getBar4().getY() + myBoard.getBar4().getHeight()
+						&& getX() + getWidth() < myBoard.getBar4().getX() + 6)
+					XVelocity = -XVelocity;
+				
+				if (getY() + getHeight() >= myBoard.getBar4().getY()
+						&& getX() < myBoard.getBar4().getX() + myBoard.getBar4().getWidth()
+						&& getX() + getWidth() > myBoard.getBar4().getX()
+						&& getY() - getHeight() < myBoard.getBar4().getY() + 21)
+					YVelocity = -YVelocity; 
+				
+				if (getY() <= myBoard.getBar4().getY() + myBoard.getBar4().getHeight()
+						&& getX() < myBoard.getBar4().getX() + myBoard.getBar4().getWidth()
+						&& getX() - getWidth() > myBoard.getBar4().getX()
+						&& getY() > myBoard.getBar4().getY() + myBoard.getBar4().getHeight() - 21)
+					YVelocity = -YVelocity; 
+	}
+	
+	private void rightAndLeftSideBarsHit()
+	{
+		// right side bar
 		
-		if (getY() + getHeight() == myBoard.getBar1().getY()
-				&& getX() - getWidth() == myBoard.getBar1().getX())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() == myBoard.getBar1().getY() + myBoard.getBar1().getHeight()
-				&& getX() - getWidth() == myBoard.getBar1().getX())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() == myBoard.getBar1().getY() + myBoard.getBar1().getHeight()
-				&& getX() == myBoard.getBar1().getX() + myBoard.getBar1().getWidth())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		// bar 2
-		
-		if (getX() <= myBoard.getBar2().getX() + myBoard.getBar2().getWidth() 
-				&& getY() + getHeight() > myBoard.getBar2().getY() 
-				&& getY() < myBoard.getBar2().getY() + myBoard.getBar2().getHeight()
-				&& getX() > myBoard.getBar2().getX() + myBoard.getBar2().getWidth() - 6)
-			XVelocity = -XVelocity;
-		
-		if (getX() + getWidth() >= myBoard.getBar2().getX()
-				&& getY() + getHeight() > myBoard.getBar2().getY() 
-				&& getY() < myBoard.getBar2().getY() + myBoard.getBar2().getHeight()
-				&& getX() + getWidth() < myBoard.getBar2().getX() + 6)
-			XVelocity = -XVelocity;
-		
-		if (getY() + getHeight() >= myBoard.getBar2().getY()
-				&& getX() < myBoard.getBar2().getX() + myBoard.getBar2().getWidth()
-				&& getX() + getWidth() > myBoard.getBar2().getX()
-				&& getY() - getHeight() < myBoard.getBar2().getY() + 21)
-			YVelocity = -YVelocity; 
-		
-		if (getY() <= myBoard.getBar2().getY() + myBoard.getBar2().getHeight()
-				&& getX() < myBoard.getBar2().getX() + myBoard.getBar2().getWidth()
-				&& getX() - getWidth() > myBoard.getBar2().getX()
-				&& getY() > myBoard.getBar2().getY() + myBoard.getBar2().getHeight() - 21)
-			YVelocity = -YVelocity; 
-		
-		if (getY() + getHeight() == myBoard.getBar2().getY()
-				&& getX() == myBoard.getBar2().getX() + myBoard.getBar2().getWidth())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() + getHeight() == myBoard.getBar2().getY()
-				&& getX() - getWidth() == myBoard.getBar2().getX())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() == myBoard.getBar2().getY() + myBoard.getBar2().getHeight()
-				&& getX() - getWidth() == myBoard.getBar2().getX())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() == myBoard.getBar2().getY() + myBoard.getBar2().getHeight()
-				&& getX() == myBoard.getBar2().getX() + myBoard.getBar2().getWidth())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		// bar 3
-		
-		if (getX() <= myBoard.getBar3().getX() + myBoard.getBar3().getWidth() 
-				&& getY() + getHeight() > myBoard.getBar3().getY() 
-				&& getY() < myBoard.getBar3().getY() + myBoard.getBar3().getHeight()
-				&& getX() > myBoard.getBar3().getX() + myBoard.getBar3().getWidth() - 6)
-			XVelocity = -XVelocity;
-		
-		if (getX() + getWidth() >= myBoard.getBar3().getX()
-				&& getY() + getHeight() > myBoard.getBar3().getY() 
-				&& getY() < myBoard.getBar3().getY() + myBoard.getBar3().getHeight()
-				&& getX() + getWidth() < myBoard.getBar3().getX() + 6)
-			XVelocity = -XVelocity;
-		
-		if (getY() + getHeight() >= myBoard.getBar3().getY()
-				&& getX() < myBoard.getBar3().getX() + myBoard.getBar3().getWidth()
-				&& getX() + getWidth() > myBoard.getBar3().getX()
-				&& getY() - getHeight() < myBoard.getBar3().getY() + 21)
-			YVelocity = -YVelocity; 
-		
-		if (getY() <= myBoard.getBar3().getY() + myBoard.getBar3().getHeight()
-				&& getX() < myBoard.getBar3().getX() + myBoard.getBar3().getWidth()
-				&& getX() - getWidth() > myBoard.getBar3().getX()
-				&& getY() > myBoard.getBar3().getY() + myBoard.getBar3().getHeight() - 21)
-			YVelocity = -YVelocity; 
-		
-		if (getY() + getHeight() == myBoard.getBar3().getY()
-				&& getX() == myBoard.getBar3().getX() + myBoard.getBar3().getWidth())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() + getHeight() == myBoard.getBar3().getY()
-				&& getX() - getWidth() == myBoard.getBar3().getX())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() == myBoard.getBar3().getY() + myBoard.getBar3().getHeight()
-				&& getX() - getWidth() == myBoard.getBar3().getX())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() == myBoard.getBar3().getY() + myBoard.getBar3().getHeight()
-				&& getX() == myBoard.getBar3().getX() + myBoard.getBar3().getWidth())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		// bar4
-		
-		if (getX() <= myBoard.getBar4().getX() + myBoard.getBar4().getWidth() 
-				&& getY() + getHeight() > myBoard.getBar4().getY() 
-				&& getY() < myBoard.getBar4().getY() + myBoard.getBar4().getHeight()
-				&& getX() > myBoard.getBar4().getX() + myBoard.getBar4().getWidth() - 6)
-			XVelocity = -XVelocity;
-		
-		if (getX() + getWidth() >= myBoard.getBar4().getX()
-				&& getY() + getHeight() > myBoard.getBar4().getY() 
-				&& getY() < myBoard.getBar4().getY() + myBoard.getBar4().getHeight()
-				&& getX() + getWidth() < myBoard.getBar4().getX() + 6)
-			XVelocity = -XVelocity;
-		
-		if (getY() + getHeight() >= myBoard.getBar4().getY()
-				&& getX() < myBoard.getBar4().getX() + myBoard.getBar4().getWidth()
-				&& getX() + getWidth() > myBoard.getBar4().getX()
-				&& getY() - getHeight() < myBoard.getBar4().getY() + 21)
-			YVelocity = -YVelocity; 
-		
-		if (getY() <= myBoard.getBar4().getY() + myBoard.getBar4().getHeight()
-				&& getX() < myBoard.getBar4().getX() + myBoard.getBar4().getWidth()
-				&& getX() - getWidth() > myBoard.getBar4().getX()
-				&& getY() > myBoard.getBar4().getY() + myBoard.getBar4().getHeight() - 21)
-			YVelocity = -YVelocity; 
-		
-		if (getY() + getHeight() == myBoard.getBar4().getY()
-				&& getX() == myBoard.getBar4().getX() + myBoard.getBar4().getWidth())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() + getHeight() == myBoard.getBar4().getY()
-				&& getX() - getWidth() == myBoard.getBar4().getX())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() == myBoard.getBar4().getY() + myBoard.getBar4().getHeight()
-				&& getX() - getWidth() == myBoard.getBar4().getX())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
-		
-		if (getY() == myBoard.getBar4().getY() + myBoard.getBar4().getHeight()
-				&& getX() == myBoard.getBar4().getX() + myBoard.getBar4().getWidth())
-		{
-			YVelocity = -YVelocity;
-			XVelocity = -XVelocity;
-		}
+				if (getX() <= myBoard.getRightSideBar().getX() + myBoard.getRightSideBar().getWidth() 
+						&& getY() + getHeight() > myBoard.getRightSideBar().getY() 
+						&& getY() < myBoard.getRightSideBar().getY() + myBoard.getRightSideBar().getHeight()
+						&& getX() > myBoard.getRightSideBar().getX() + myBoard.getRightSideBar().getWidth() - 3)
+					XVelocity = -XVelocity;
+				
+				if (getX() + getWidth() >= myBoard.getRightSideBar().getX()
+						&& getY() + getHeight() > myBoard.getRightSideBar().getY() 
+						&& getY() < myBoard.getRightSideBar().getY() + myBoard.getRightSideBar().getHeight()
+						&& getX() + getWidth() < myBoard.getRightSideBar().getX() + 3)
+					XVelocity = -XVelocity;
+				
+				if (getY() + getHeight() >= myBoard.getRightSideBar().getY()
+						&& getX() < myBoard.getRightSideBar().getX() + myBoard.getRightSideBar().getWidth()
+						&& getX() + getWidth() > myBoard.getRightSideBar().getX() 
+						&& getY() - getHeight() < myBoard.getRightSideBar().getY() + 21)
+					YVelocity = -YVelocity;  
+			
+				if (getY() <= myBoard.getRightSideBar().getY() + myBoard.getRightSideBar().getHeight()
+						&& getX() < myBoard.getRightSideBar().getX() + myBoard.getRightSideBar().getWidth()
+						&& getX() - getWidth() > myBoard.getRightSideBar().getX()
+						&& getY() > myBoard.getRightSideBar().getY() + myBoard.getRightSideBar().getHeight() - 21)
+					YVelocity = -YVelocity; 
+				
+				
+				// left side bar
+				
+				if (getX() <= myBoard.getLeftSideBar().getX() + myBoard.getLeftSideBar().getWidth() 
+						&& getY() + getHeight() > myBoard.getLeftSideBar().getY() 
+						&& getY() < myBoard.getLeftSideBar().getY() + myBoard.getLeftSideBar().getHeight()
+						&& getX() > myBoard.getLeftSideBar().getX() + myBoard.getLeftSideBar().getWidth() - 3)
+					XVelocity = -XVelocity;
+				
+				if (getX() + getWidth() >= myBoard.getLeftSideBar().getX()
+						&& getY() + getHeight() > myBoard.getLeftSideBar().getY() 
+						&& getY() < myBoard.getLeftSideBar().getY() + myBoard.getLeftSideBar().getHeight()
+						&& getX() + getWidth() < myBoard.getLeftSideBar().getX() + 3)
+					XVelocity = -XVelocity;
+				
+				if (getY() + getHeight() >= myBoard.getLeftSideBar().getY()
+						&& getX() < myBoard.getLeftSideBar().getX() + myBoard.getLeftSideBar().getWidth()
+						&& getX() + getWidth() > myBoard.getLeftSideBar().getX() 
+						&& getY() - getHeight() < myBoard.getLeftSideBar().getY() + 21)
+					YVelocity = -YVelocity;  
+			
+				if (getY() <= myBoard.getLeftSideBar().getY() + myBoard.getLeftSideBar().getHeight()
+						&& getX() < myBoard.getLeftSideBar().getX() + myBoard.getLeftSideBar().getWidth()
+						&& getX() - getWidth() > myBoard.getLeftSideBar().getX()
+						&& getY() > myBoard.getLeftSideBar().getY() + myBoard.getLeftSideBar().getHeight() - 21)
+					YVelocity = -YVelocity; 
+	}
+	
+	public void boundaryHit()
+	{
+		borderHit();
+		sideBarHit();
+		curvedWallHit();
+		fourBarsHit();
+		rightAndLeftSideBarsHit();
 	}
 	
 	public void launch()
 	{
 		springed = false;
 		setLocation(sprong.getX() - 5, sprong.getY() - 17);
-		YVelocity =- power;
+		YVelocity = -power;
 		power = 0;
 	}
 	
