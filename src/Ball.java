@@ -14,9 +14,10 @@ public class Ball extends GOval{
 	private Spring sprong;
 	private boolean springed = false;
 	private double spcp = 3.5;
-	private double tanSlope; 
+	private double tanSlope;
+	private BallsRemaining myRemain;
 	
-	public Ball(double x, double y, Color c, double r, double xVel, double yVel, Board box, Spring spring)
+	public Ball(double x, double y, Color c, double r, double xVel, double yVel, Board box, Spring spring, BallsRemaining remain)
 	    {
 	        super(x, y, 2*r, 2*r);
 	        setColor(c);
@@ -26,6 +27,7 @@ public class Ball extends GOval{
 	        YVelocity = yVel;
 	        myBoard = box;
 	        sprong = spring;
+	        myRemain = remain;	        
 	    }
 	
 	public void gravitAdd(double constant)
@@ -52,10 +54,6 @@ public class Ball extends GOval{
 	
 	private void borderHit()
 	{
-		if (getY() + getHeight() >= (myBoard.getHeight() - 51) && YVelocity > 0)
-		{ 
-			YVelocity = YVelocity * -1;
-		}
 		if (getY() <= 51 && YVelocity < 0)
 		{
 			YVelocity = YVelocity * -1;
@@ -268,6 +266,7 @@ public class Ball extends GOval{
 	
 	public void boundaryHit()
 	{
+		ballsRemaining();
 		borderHit();
 		sideBarHit();
 		curvedWallHit();
@@ -313,7 +312,7 @@ public class Ball extends GOval{
 	}
 	
 	public void moved(double constant)
-	{
+	{	
 		if (!springed)
 		{
 			gravitAdd(constant);
@@ -340,4 +339,21 @@ public class Ball extends GOval{
 			launch();
 		}
 	}	
+	
+	private void ballsRemaining()
+	{	
+		if (getY() >= myBoard.getHeight() - 51)
+		{ 			
+			myRemain.decrement();
+			
+			if (myRemain.getRemain() >= 0)
+			{
+			setLocation(472, 680);
+			}
+			
+			else myBoard.endGame();
+		}
+
+	}
+	
 }

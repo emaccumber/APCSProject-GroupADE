@@ -20,6 +20,7 @@ public class Board extends GraphicsProgram {
     private GImage bars;
     private GImage spring;
     private GImage sideWalls;
+    private GImage gameOver;
     private SideBars sideBars;
     private Score scoreBoard;
     private CircleBumper circleBumper50;
@@ -44,13 +45,15 @@ public class Board extends GraphicsProgram {
 	double tick = 1;
 	double gravconstant = 3;
 	private Spring sprong = new Spring(6, 40, this, 477, 705);
-	private Ball pinball = new Ball(472, 680, pb, 8, 0, 0, this, sprong);
-	private FlipperLeft lflip = new FlipperLeft(186, 658, Color.BLACK, this, pinball);
-	private FlipperRight rflip = new FlipperRight(351, 658, Color.BLACK, this, pinball);
-	private RightBarrier rBar = new RightBarrier(444, 616, Color.BLACK, this, pinball);
-	private LeftBarrier lBar = new LeftBarrier(92, 616, Color.BLACK, this, pinball);
+	private BallsRemaining ballsLeft = new BallsRemaining("", 285, 782, 5);
+	private Ball pinball = new Ball(472, 680, pb, 8, 0, 0, this, sprong, ballsLeft);
+	private FlipperLeft lflip = new FlipperLeft(182, 653, Color.BLACK, this, pinball);
+	private FlipperRight rflip = new FlipperRight(355, 653, Color.BLACK, this, pinball);
+	private RightBarrier rBar = new RightBarrier(449, 611, Color.BLACK, this, pinball);
+	private LeftBarrier lBar = new LeftBarrier(87, 611, Color.BLACK, this, pinball);
 	private LTriangle ltri = new LTriangle(45, 647, Color.BLACK, this, pinball);
 	private RTriangle rtri = new RTriangle(461, 670, Color.BLACK, this, pinball);
+	
 	
 	// listens for key presses 
 	public void keyPressed(KeyEvent s)
@@ -85,6 +88,8 @@ public void keyReleased(KeyEvent s)
         spring = new GImage("Spring.png", 0, 0);
         spring.setSize(getWidth(), getHeight());
         sideWalls = new GImage("SideWalls.png", 0, 0);
+        gameOver = new GImage("gameover.png", 0, 0);
+        gameOver.setSize(getWidth(), getHeight());
         
         bar1 = new Bar(93, 112, 17, 48);    
         bar2 = new Bar(150, 112, 17, 48);        
@@ -128,6 +133,7 @@ public void keyReleased(KeyEvent s)
         add(rtri);
         add(border);
         add(scoreBoard);
+        add(ballsLeft);
         add(lBar);
         add(rBar);
         add(rightSideBar);
@@ -201,4 +207,12 @@ public void keyReleased(KeyEvent s)
     {
     	return rightSideBar;
     }  
+    
+    public void endGame()
+    {
+    	add(gameOver);
+    	pause(20000);
+    	System.exit(0);
+    }
+    
 }

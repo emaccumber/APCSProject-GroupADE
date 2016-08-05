@@ -25,8 +25,8 @@ public class LeftBarrier extends GPolygon{
         board = box;
         pin=ping;
         addVertex(0, 0);        
-        addVertex(100, 0);
-        addVertex(100, 10);
+        addVertex(110, 0);
+        addVertex(110, 10);
         addVertex(0, 10);
         rotate(-23);
         setVisible(false);
@@ -40,10 +40,10 @@ public class LeftBarrier extends GPolygon{
 			ydown=ydown * -1;
 		}
 		
-		if (x <= getX() + 100
+		if (x <= getX() + 110
 				&& x >=getX()
 				&& y >=ydown
-				&& y <= ydown + 10)
+				&& y <= ydown + 11)
 		{       						
 			return true;
 		}
@@ -55,7 +55,8 @@ public class LeftBarrier extends GPolygon{
 	}
 	
 	public void checkForHits(){
-		if (hitBox(pin.getX() + (pin.getWidth() / 2), pin.getY() + pin.getHeight()))
+		if (hitBox(pin.getX() + (pin.getWidth() / 2), pin.getY() + pin.getHeight())
+				&& pin.getYVel()>=0)
 		{
 			totalvel = Math.sqrt((pin.getXVel() * pin.getXVel()) + (pin.getYVel() * pin.getYVel()));
 			angle = Math.toRadians(-23 + 90);
@@ -64,6 +65,17 @@ public class LeftBarrier extends GPolygon{
 			xvel = Math.cos(angle);
 			xvel = xvel * totalvel;
 			pin.changeVel(xvel, -yvel);
+		}
+		else if(hitBox(pin.getX() + (pin.getWidth() / 2), pin.getY() + pin.getHeight())
+				&& pin.getYVel()<0
+				&&pin.getY()>=ydown+3){
+			totalvel = Math.sqrt((pin.getXVel() * pin.getXVel()) + (pin.getYVel() * pin.getYVel()));
+			angle = Math.toRadians(-23 + 90);
+			yvel = Math.sin(angle);
+			yvel = yvel * totalvel;
+			xvel = Math.cos(angle);
+			xvel = xvel * totalvel;
+			pin.changeVel(-xvel, yvel);
 		}
 	}
 }

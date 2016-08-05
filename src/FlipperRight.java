@@ -54,7 +54,10 @@ public class FlipperRight extends GPolygon{
 			
 			if (flip >= -25 && up && pin.getYVel() > 0)
 			{				
-				pin.changeVel(3 * xvel, 3 * yvel);
+				pin.changeVel(3 * xvel, -3 * yvel);
+				if(Math.sqrt((pin.getXVel() * pin.getXVel()) + (pin.getYVel() * pin.getYVel()))<1){
+					pin.changeVel(5 * xvel, -5 * yvel);
+				}
 			}
 			
 			else
@@ -102,8 +105,8 @@ public class FlipperRight extends GPolygon{
 	{
 		if (flip >= -25 && up)
 		{
-			rotate(-5);
-			flip = flip - 5;
+			rotate(-2.5);
+			flip = flip - 2.5;
 		}
 	}
 	
