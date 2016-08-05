@@ -31,7 +31,7 @@ public class FlipperLeft extends GPolygon {
         setFillColor(c);
         setFilled(true);
         board = box;
-        pin=ping;
+        pin = ping;
         addVertex(0, 0);
         addVertex(0, 10);
         addVertex(60, 10);

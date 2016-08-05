@@ -1,11 +1,14 @@
 package objects;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+
 import acm.graphics.GImage;
 import acm.graphics.GOval;
 import ball.Ball;
 import game.Board;
 import scoring.Score;
 
-public class CircleBumper extends GOval {
+public class CircleBumper extends GOval implements MouseMotionListener {
 
     private Board myBoard;
     private GImage bumperGImage;
@@ -21,6 +24,7 @@ public class CircleBumper extends GOval {
 	private int adding;
 	public boolean debounce = false;
 
+
     public CircleBumper(double x, double y, double r, String bumperImage, Board board, Ball target, Score scoreboard, int scoreadd)
     {
         super(x, y, 2*r, 2*r);
@@ -31,6 +35,7 @@ public class CircleBumper extends GOval {
         ball = target;
         scor = scoreboard;
         adding = scoreadd;
+    	addMouseMotionListener(this);
     }
 
     public void showBumper()
@@ -97,5 +102,23 @@ public class CircleBumper extends GOval {
 		}
 		
 		else debounce = false;		
+	}
+
+	public void mouseDragged(MouseEvent e) 
+	{	
+		updatePosition(e);
+		System.out.println("dragged");
+	}
+
+	public void mouseMoved(MouseEvent e) 
+	{
+		
+		System.out.println("moved");
+	}
+	
+	public void updatePosition(MouseEvent e)
+	{
+		setLocation(e.getX(), e.getY());
+		bumperGImage.setLocation(e.getX(), e.getY());
 	}
 }

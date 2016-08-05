@@ -229,4 +229,11 @@ public void keyReleased(KeyEvent s)
     	System.exit(0);
     }
     
+    public Ball getPinball()
+    {
+    	return pinball;
+    }
+    
+    
+    
 }
