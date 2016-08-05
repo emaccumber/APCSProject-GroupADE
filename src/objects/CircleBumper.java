@@ -23,6 +23,8 @@ public class CircleBumper extends GOval implements MouseMotionListener {
 	private double totalvel;
 	private int adding;
 	public boolean debounce = false;
+	private double xRad;
+	private double yRad;
 
 
     public CircleBumper(double x, double y, double r, String bumperImage, Board board, Ball target, Score scoreboard, int scoreadd)
@@ -36,6 +38,8 @@ public class CircleBumper extends GOval implements MouseMotionListener {
         scor = scoreboard;
         adding = scoreadd;
     	addMouseMotionListener(this);
+    	xRad = r;
+    	yRad = r;
     }
 
     public void showBumper()
@@ -107,18 +111,16 @@ public class CircleBumper extends GOval implements MouseMotionListener {
 	public void mouseDragged(MouseEvent e) 
 	{	
 		updatePosition(e);
-		System.out.println("dragged");
 	}
 
 	public void mouseMoved(MouseEvent e) 
 	{
-		
-		System.out.println("moved");
+		// I feel empty inside :(
 	}
 	
 	public void updatePosition(MouseEvent e)
 	{
-		setLocation(e.getX(), e.getY());
-		bumperGImage.setLocation(e.getX(), e.getY());
+		setLocation(e.getX() - xRad, e.getY() - yRad);
+		bumperGImage.setLocation(e.getX() - xRad, e.getY() - yRad);
 	}
 }
