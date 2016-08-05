@@ -343,12 +343,11 @@ public class Ball extends GOval{
 	private void ballsRemaining()
 	{	
 		if (getY() >= myBoard.getHeight() - 51)
-		{ 			
-			myRemain.decrement();
-			
+		{ 					
 			if (myRemain.getRemain() >= 0)
 			{
-			setLocation(472, 680);
+				myRemain.decrement();
+				setLocation(472, 680);
 			}
 			
 			else myBoard.endGame();

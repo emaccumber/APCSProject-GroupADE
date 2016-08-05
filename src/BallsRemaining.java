@@ -21,16 +21,17 @@ public class BallsRemaining extends Boards {
 	public void decrement()
 	{
 		remaining--;
+		
 		if (remaining <= 0) 
-		setLabel("Balls Remaining: 0");
+			setLabel("Balls Remaining: 0");
 		
 		else
-		setLabel("Balls Remaining: " + remaining);
+			setLabel("Balls Remaining: " + remaining);
+
 	}
 	
 	public int getRemain()
 	{
 		return remaining;
 	}
-
 }
