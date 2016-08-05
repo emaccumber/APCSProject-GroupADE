@@ -15,7 +15,7 @@ public class BallsRemaining extends Boards {
 	public BallsRemaining (String str, int x, int y, int numOfBalls)
     {
         super(str, x, y);
-        setColor(Color.gray);
+        setColor(Color.white);
         remaining = numOfBalls - 1;
         setFont("Frozen Crystal Bold-Bold-22");
         setLabel("Balls Remaining: " + (numOfBalls - 1));

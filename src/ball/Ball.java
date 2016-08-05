@@ -356,7 +356,5 @@ public class Ball extends GOval{
 			
 			else myBoard.endGame();
 		}
-
-	}
-	
+	}	
 }

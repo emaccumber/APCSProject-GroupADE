@@ -35,6 +35,7 @@ public class Board extends GraphicsProgram {
     private GImage spring;
     private GImage sideWalls;
     private GImage gameOver;
+    private GImage footer;
     private SideBars sideBars;
     private Score scoreBoard;
     private CircleBumper circleBumper50;
@@ -104,6 +105,8 @@ public void keyReleased(KeyEvent s)
         sideWalls = new GImage("SideWalls.png", 0, 0);
         gameOver = new GImage("gameover.png", 0, 0);
         gameOver.setSize(getWidth(), getHeight());
+        footer = new GImage("footer.png", 0, 0);
+        footer.setSize(getWidth(), getHeight());
         
         bar1 = new Bar(93, 112, 17, 48);    
         bar2 = new Bar(150, 112, 17, 48);        
@@ -152,6 +155,7 @@ public void keyReleased(KeyEvent s)
         add(rBar);
         add(rightSideBar);
         add(leftSideBar);
+        add(footer);
     }
 
     public void run()
