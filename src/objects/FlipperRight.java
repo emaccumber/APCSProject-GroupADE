@@ -1,3 +1,4 @@
+package objects;
 /**
  * Created by Abim, David and Ethan
  * AP Computer Science
@@ -6,6 +7,8 @@
 import java.awt.Color;
 
 import acm.graphics.GPolygon;
+import ball.Ball;
+import game.Board;
 
 public class FlipperRight extends GPolygon{
 	

@@ -1,10 +1,7 @@
-/**
- * Created by Abim, David and Ethan
- * AP Computer Science
- * August 2016
- */
+package objects;
 import acm.graphics.GImage;
 import acm.graphics.GRect;
+import game.Board;
 
 public class SideBars extends GRect {
 

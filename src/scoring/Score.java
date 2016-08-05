@@ -1,3 +1,4 @@
+package scoring;
 /**
  * Created by Abim, David and Ethan
  * AP Computer Science

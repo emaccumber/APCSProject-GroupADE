@@ -1,3 +1,4 @@
+package objects;
 /**
  * AP Computer Science
  * August 2016
@@ -5,11 +6,13 @@
 import java.awt.Color;
 
 import acm.graphics.GPolygon;
+import ball.Ball;
+import game.Board;
 
-public class RTriangle extends GPolygon{
+public class LTriangle extends GPolygon{
 	
-	private Board board;
-	private Ball pin;
+	public Board board;
+	public Ball pin;
 	private double totalvel;
 	private double xvel;
 	private double yvel;
@@ -18,7 +21,7 @@ public class RTriangle extends GPolygon{
 	private double xdist;
 	private double ydown;
 	
-	public RTriangle(double x, double y, Color c, Board box, Ball ping)
+	public LTriangle(double x, double y, Color c, Board box, Ball ping)
 	{
 		super(x, y);
 		setColor(c);
@@ -28,21 +31,20 @@ public class RTriangle extends GPolygon{
         pin = ping;
         addVertex(0, 0);
         addVertex(0, 100);
-        addVertex(-100, 100);
+        addVertex(100, 100);
 	}
-	
+	 
 	public boolean hitBox(double x, double y)
 	{
 		xdist = getX() - x;
-		ydown = getY() + (45 * 3 / 100) * xdist;
-		
-		if (ydown<0)
+		ydown = getY() + (-45 * 3 / 100) * xdist;
+		if (ydown < 0)
 		{
-			ydown=ydown*-1;
+			ydown = ydown * -1;
 		}
 		
-		if(x >= getX() - 100
-				&& x <= getX()
+		if(x <= getX() + 100
+				&& x >= getX()
 				&& y >= ydown
 				&& y <= ydown + 100)
 		{
@@ -60,18 +62,12 @@ public class RTriangle extends GPolygon{
 		if (hitBox(pin.getX() + (pin.getWidth() / 2), pin.getY() + pin.getHeight()))
 		{
 			totalvel = Math.sqrt((pin.getXVel() * pin.getXVel()) + (pin.getYVel() * pin.getYVel()));
-			angle = Math.toRadians(45 + 90);
+			angle = Math.toRadians(-45 + 90);
 			yvel = Math.sin(angle);
 			yvel = yvel * totalvel;
 			xvel = Math.cos(angle);
 			xvel = xvel * totalvel;
 			pin.changeVel(xvel, -yvel);
-		}
-		
-		if ((pin.getY() + pin.getHeight() / 2) > getY()
-				&& pin.getX() > getX())
-		{
-			pin.changeVel(-pin.getXVel(), 0);
 		}
 	}
 }

@@ -1,3 +1,4 @@
+package background;
 /**
  * Created by Abim, David and Ethan
  * AP Computer Science
@@ -6,6 +7,7 @@
 import acm.graphics.GImage;
 import acm.graphics.GOval;
 import acm.graphics.GPolygon;
+import game.Board;
 public class CurvedWall extends GPolygon {
 
     private Board myBoard;

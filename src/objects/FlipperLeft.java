@@ -1,9 +1,13 @@
+package objects;
 /**
  * Created by Abim, David and Ethan in August 2016
  * AP Computer Science
  */
 import java.awt.Color;
+
 import acm.graphics.GPolygon;
+import ball.Ball;
+import game.Board;
 public class FlipperLeft extends GPolygon {
 	
 	private double xpos;

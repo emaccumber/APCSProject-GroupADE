@@ -1,15 +1,18 @@
+package objects;
 /**
  * Created by Abim, David and Ethan
  * AP Computer Science
  * August 2016
  */
 import acm.graphics.GRect;
+import game.Board;
+
 import java.awt.Color;
 public class Spring extends GRect
 {
 	private double ySet;
-	protected double strength = 0;
-	protected int pulled = 0;
+	public double strength = 0;
+	public int pulled = 0;
 	
 	public Spring(double xS, double yS, Board board, double xP, double yP) 
 	{

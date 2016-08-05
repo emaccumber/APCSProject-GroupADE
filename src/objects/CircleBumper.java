@@ -1,9 +1,9 @@
-/**
- * AP Computer Science
- * August 2016
- */
+package objects;
 import acm.graphics.GImage;
 import acm.graphics.GOval;
+import ball.Ball;
+import game.Board;
+import scoring.Score;
 
 public class CircleBumper extends GOval {
 

@@ -1,3 +1,4 @@
+package game;
 /**
  * Created by Abim, David and Ethan
  * AP Computer Science
@@ -11,6 +12,19 @@ import java.awt.*;
 
 
 import acm.program.GraphicsProgram;
+import ball.Ball;
+import ball.BallsRemaining;
+import objects.Bar;
+import objects.CircleBumper;
+import objects.FlipperLeft;
+import objects.FlipperRight;
+import objects.LTriangle;
+import objects.LeftBarrier;
+import objects.RTriangle;
+import objects.RightBarrier;
+import objects.SideBars;
+import objects.Spring;
+import scoring.Score;
 
 public class Board extends GraphicsProgram {
 

@@ -1,9 +1,12 @@
+package ball;
 /**
  * Created by Abim, David and Ethan
  * AP Computer Science
  * August 2016
  */
 import java.awt.Color;
+
+import scoring.Boards;
 
 public class BallsRemaining extends Boards {
 	

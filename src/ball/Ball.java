@@ -1,10 +1,14 @@
+package ball;
 /**
  * Created by Abim, David and Ethan
  * AP Computer Science
  * August 2016
  */
 import java.awt.Color;
+
 import acm.graphics.GOval;
+import game.Board;
+import objects.Spring;
 
 public class Ball extends GOval{
 	private double XVelocity;

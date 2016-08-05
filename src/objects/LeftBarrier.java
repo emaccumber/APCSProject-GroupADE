@@ -1,3 +1,4 @@
+package objects;
 /**
  * AP Computer Science
  * August 2016
@@ -5,8 +6,10 @@
 import java.awt.Color;
 
 import acm.graphics.GPolygon;
+import ball.Ball;
+import game.Board;
 
-public class RightBarrier extends GPolygon{
+public class LeftBarrier extends GPolygon{
 	
 	private Board board;
 	private Ball pin;
@@ -18,46 +21,48 @@ public class RightBarrier extends GPolygon{
 	private double xdist;
 	private double ydown;
 	
-	public RightBarrier(double x, double y, Color c, Board box, Ball ping)
-	{
+	public LeftBarrier(double x, double y, Color c, Board box, Ball ping){
+		
 		super(x, y);
 		setColor(Color.red);
         board = box;
-        pin = ping;
+        pin=ping;
         addVertex(0, 0);        
-        addVertex(-110, 0);
-        addVertex(-110, 10);
+        addVertex(110, 0);
+        addVertex(110, 10);
         addVertex(0, 10);
-        rotate(23);
+        rotate(-23);
         setVisible(false);
 	}
-	public boolean hitBox(double x, double y)
-	{
+	
+	public boolean hitBox(double x, double y){
 		xdist = getX() - x;
-		ydown = getY() + (23 * 2.0 / 100) * xdist;
+		ydown = getY() + (-23 * 2.0 / 100) * xdist;
 		if (ydown < 0)
 		{
-			ydown = ydown * -1;
+			ydown=ydown * -1;
 		}
-		if (x >= getX() - 110
-				&& x <= getX()
-				&& y >= ydown
+		
+		if (x <= getX() + 110
+				&& x >=getX()
+				&& y >=ydown
 				&& y <= ydown + 11)
-		{
+		{       						
 			return true;
 		}
+		
 		else
 		{
 			return false;
 		}
 	}
-	public void checkForHits()
-	{
+	
+	public void checkForHits(){
 		if (hitBox(pin.getX() + (pin.getWidth() / 2), pin.getY() + pin.getHeight())
 				&& pin.getYVel()>=0)
 		{
 			totalvel = Math.sqrt((pin.getXVel() * pin.getXVel()) + (pin.getYVel() * pin.getYVel()));
-			angle = Math.toRadians(23 + 90);
+			angle = Math.toRadians(-23 + 90);
 			yvel = Math.sin(angle);
 			yvel = yvel * totalvel;
 			xvel = Math.cos(angle);
@@ -68,7 +73,7 @@ public class RightBarrier extends GPolygon{
 				&& pin.getYVel()<0
 				&&pin.getY()>=ydown+3){
 			totalvel = Math.sqrt((pin.getXVel() * pin.getXVel()) + (pin.getYVel() * pin.getYVel()));
-			angle = Math.toRadians(23 + 90);
+			angle = Math.toRadians(-23 + 90);
 			yvel = Math.sin(angle);
 			yvel = yvel * totalvel;
 			xvel = Math.cos(angle);
